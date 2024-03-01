@@ -45,7 +45,7 @@
 							<thead>
 								<tr>
 									<td>Position</td>
-									<td>Action</td>
+									<th style="width: 30%; text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>

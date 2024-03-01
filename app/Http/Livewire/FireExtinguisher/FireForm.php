@@ -6,12 +6,13 @@ use Livewire\Component;
 use App\Models\FireList;
 use App\Models\TypeList;
 use App\Models\LocationList;
+use App\Models\FindingList;
 
 class FireForm extends Component
 {
     public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $inspection_findings, $status,$position_id,$dept, $password;
     public $action = '';  //flash
-    public $message = '';  //flash
+    public $message = '';  //flashSSS
     public $fireCheck = array();
     public $selectedFire = [];
 
@@ -119,10 +120,13 @@ class FireForm extends Component
         $fire =FireList::all();
         $types =TypeList::all();
         $locations =LocationList::all();
+        $inspections =FindingList::all();
+
         return view('livewire.fire-extinguisher.fire-form', [
             'fire' => $fire,
             'types' => $types,
             'locations' => $locations,
+            'inspections' => $inspections,
 
         ]);
     }

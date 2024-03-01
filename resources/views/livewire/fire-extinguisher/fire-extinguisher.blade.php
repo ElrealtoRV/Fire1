@@ -1,3 +1,4 @@
+
 <div class="content">
 	<div class="page-header">
 		<div class="row">
@@ -59,8 +60,9 @@
 									<th style="width: 30%">Location</th>
 									<th style="width: 30%">Installation Date</th>
 									<th style="width: 30%">Expiration Date</th>
-									<th style="width: 30%">Inspection_findings</th>
+									<th style="width: 50%">Inspection Finding</th>
 									<th style="width: 30%">Status</th>
+									<th style="width: 30%; text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -72,10 +74,10 @@
                                 <td>{{ optional($fires->FireLocation)->description }}</td>
                                 <td>{{  $fires->installation_date }}</td>
                                 <td>{{  $fires->expiration_date }}</td>
-                                <td>{{  $fires->inspection_findings }}</td>
+								<td class="scrollable-cell" id="truncate-text">{{ optional($fires->FireFinding)->description }}</td>
                                 <td>{{  $fires->status }}</td>
 										
-									</td>
+									
 									<td class="text-center">
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-primary btn-sm mx-1" wire:click="editFire({{ $fires->id }})" title="Edit">
@@ -96,6 +98,7 @@
 				</div>
 			</div>
 		</div>
+
 		{{-- Modal --}}
 		<div wire.ignore.self class="modal fade" id="FireModal" tabindex="-1" role="dialog" aria-labelledby="FireModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 			<div class="modal-dialog modal-dialog-centered modal-lg">

@@ -22,4 +22,9 @@ class FireList extends Model
         return $this->belongsTo(LocationList::class, 'location', 'id');
         
     }
+    public function FireFinding()
+    {
+        return $this->belongsTo(FindingList::class, 'inspection_findings', 'id');
+        
+    }
 }

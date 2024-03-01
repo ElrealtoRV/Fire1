@@ -58,7 +58,7 @@
 									<th style="width: 20%">Position</th>
 									<th style="width: 25%">Email</th>
 									<th>Role</th>
-									<th style="width: 15%">Action</th>
+									<th style="width: 30%; text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>

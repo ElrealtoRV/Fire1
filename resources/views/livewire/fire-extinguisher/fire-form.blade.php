@@ -104,7 +104,15 @@
                                  Inspection Findings
                                     <span class="login-danger">*</span>
                                 </label>
-                                <input class="form-control" type="text" wire:model="inspection_findings" placeholder />
+                                <select class="form-control select" wire:model="inspection_findings">
+
+                                <option value="" selected>Select a Finding</option>
+                                @foreach ($inspections as $inspection)
+                                    <option value="{{ $inspection->id }}">
+                                        {{ $inspection->description }}
+                                    </option>
+                                @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>

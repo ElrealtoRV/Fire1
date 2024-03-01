@@ -45,7 +45,7 @@
 							<thead>
 								<tr>
                                 <th style="width: 70%">Type</th>
-                                <th style="width: 30%; text:center;">Action</th>
+                                <th style="width: 30%; text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>

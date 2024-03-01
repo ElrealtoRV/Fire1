@@ -5,7 +5,7 @@
 				<ul class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
 					<li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-					<li class="breadcrumb-item active">Location List</li>
+					<li class="breadcrumb-item active">Finding List</li>
 				</ul>
 			</div>
 		</div>
@@ -20,10 +20,10 @@
 						<div class="row align-items-center">
 							<div class="col">
                                 <div class="doctor-table-blk">
-									<h3>Location List</h3>
+									<h3>Finding List</h3>
 									<div class="doctor-search-blk">
 										<div class="add-group">
-											<a wire:click="createLocation" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
+											<a wire:click="createInspection" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
 											</a>
 										</div>
 									</div>
@@ -44,24 +44,24 @@
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
 								<tr>
-                                <th style="width: 70%">Location</th>
-								<th style="width: 30%; text-align: center;">Action</th>
+                                <th style="width: 70%">Finding</th>
+                                <th style="width: 30%; text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($locations as $location)
+								@foreach ($inspections as $inspection)
 									<tr>
 										<td>
-											{{ $location->description }}
+											{{ $inspection->description }}
 										</td>
 
 										<td class="text-center">
 											<div class="btn-group" role="group">
 												<button type="button" class="btn btn-primary btn-sm mx-1"
-													wire:click="editLocation({{ $location->id }})" title="Edit">
+													wire:click="editInspection({{ $inspection->id }})" title="Edit">
 													<i class='fa fa-pen-to-square'></i>
 												</button>
-												<a class="btn btn-danger btn-sm mx-1" wire:click="deleteLocation({{ $location->id }})" title="Delete">
+												<a class="btn btn-danger btn-sm mx-1" wire:click="deleteInspection({{ $inspection->id }})" title="Delete">
 													<i class="fa fa-trash"></i>
 												</a>
 											</div>
@@ -79,12 +79,12 @@
 </div>
 {{-- Modal --}}
 
-<div wire.ignore.self class="modal fade" id="LocationModal" tabindex="-1" role="dialog"
-	aria-labelledby="LocationModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div wire.ignore.self class="modal fade" id="InspectionModal" tabindex="-1" role="dialog"
+	aria-labelledby="InspectionModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 	<div class="modal-dialog modal-dialog-centered">
-		<livewire:location.location-form />
+		<livewire:inspection.inspection-form />
 	</div>
 </div>
 @section('custom_script')
-	@include('layouts.scripts.location-script')
+	@include('layouts.scripts.inspection-script')
 @endsection

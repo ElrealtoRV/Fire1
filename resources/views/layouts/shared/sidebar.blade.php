@@ -37,7 +37,7 @@
 						<li><a href="{{ asset('fire-extinguisher') }}">Fire Extinguisher</a></li>
 						<li><a href="{{ asset('type') }}">Type</a></li>
 						<li><a href="{{ asset('location') }}">Location</a></li>
-						<li><a href="{{ asset('inspection-findings ') }}">Inspection Findings</a></li>
+						<li><a href="{{ asset('inspection ') }}">Inspection Findings</a></li>
 					</ul>
 				</li>
 				<li>
