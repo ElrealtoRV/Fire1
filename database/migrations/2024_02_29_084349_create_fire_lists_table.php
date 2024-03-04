@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('serial_number');
             $table->string('location');
             $table->date('installation_date');
-            $table->date('expiration_date');
+            $table->date('expiration_date')->default(now());
             $table->text('inspection_findings')->nullable();
             $table->string('status');
             $table->timestamps();

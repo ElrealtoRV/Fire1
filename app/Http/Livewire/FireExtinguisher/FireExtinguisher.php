@@ -55,7 +55,7 @@ class FireExtinguisher extends Component
         $types = TypeList::query();
         $locations = FireList::with('FireLocation')->get();
         $inspections = FireList::with('FireFinding')->get();
-
+        
 
         
 

@@ -95,9 +95,12 @@
                                     Expiration Date
                                     <span class="login-danger">*</span>
                                 </label>
-                                <input class="form-control" type="date" wire:model="expiration_date" placeholder />
+                                <input class="form-control" type="date" id="expiry-date" wire:model="expiration_date" placeholder />
+                                @error('expiration_date') <p class="text-danger">{{$message}}</p> @enderror
                             </div>
                         </div>
+                        
+                        
                         <div class="col-md-6">
                             <div class="form-group local-forms">
                                 <label>
@@ -113,10 +116,11 @@
                                     </option>
                                 @endforeach
                                 </select>
+                                
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group local-forms">
@@ -139,3 +143,16 @@
         </div>
     </form>
 </div>
+@push('scripts')
+    <script>
+            $(function(){
+                $('#expiry-date').datetimepicker({
+                    format: 'Y-MM-DD'
+                })
+                .on('dp.change',function(ev){
+                    var data = $('#expiry-date').val();
+                    Livewire.emit('expiration_date', data);
+                })
+            });
+    </script>
+@endpush

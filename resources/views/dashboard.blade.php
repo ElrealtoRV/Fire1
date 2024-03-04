@@ -41,20 +41,25 @@
 				<li>
 					<i class="fas fa-fire-extinguisher"></i>
 					<span class="text">
-						<h3>234</h3>
-						<p>Fire Extinguisher</p>
+							@if($fires == 0)
+								<h3>{{ $fires }}</h3>
+								<p>Fire Extinguisher</p>
+							@else
+								<h3>{{ $fires }}</h3>
+								<p>Fire Extinguisher{{ $fires != 1 ? 's' : '' }}</p>
+							@endif
 					</span>
 				</li>
 					<li>
 					
 						<i class='bx bxs-group'></i>
 					<span class="text">
-					@if($users == 0)
-						<h3>{{ $users }}</h3>
+					@if($regularusers == 0)
+						<h3>{{ $regularusers }}</h3>
 						<p>User</p>
 					@else
-						<h3>{{ $users }}</h3>
-						<p>User{{ $users != 1 ? 's' : '' }}</p>
+						<h3>{{ $regularusers }}</h3>
+						<p>User{{ $regularusers != 1 ? 's' : '' }}</p>
 					@endif
 					</span>
 				
@@ -107,17 +112,37 @@
 						</thead>
 						<tbody>
 
-						@forelse ($userlist as $userlists)
+						@forelse ($regular as $regularuser)
 							<tr data-type="user">
 								<td>
 									
-									<p>{{ $userlists->first_name }} {{ $userlists->last_name }}</p>
+									<p>{{ $regularuser->first_name }} {{ $regularuser->last_name }}</p>
 								</td>
-								<td>{{ $userlists->position->description }}</td>
+								<td>{{ $regularuser->Status->description }}</td>
 								<td>
 								
-									<span class="status {{ $userlists->status == 1 ? 'active' : 'inactive' }}">
-										{{ $userlists->status == 1 ? 'Active' : 'Inactive' }}
+									<span class="status {{ $regularuser->status == 1 ? 'active' : 'inactive' }}">
+										{{ $regularuser->status == 1 ? 'Active' : 'Inactive' }}
+									</span>
+								</td>
+							</tr>
+							@empty
+							<tr>
+								<td colspan="3">No users found</td>
+							</tr>
+						@endforelse
+
+						@forelse ($employees as $employee)
+							<tr data-type="user">
+								<td>
+									
+									<p>{{ $employee->first_name }} {{ $employee->last_name }}</p>
+								</td>
+								<td>{{ $employee->position->description }}</td>
+								<td>
+								
+									<span class="status {{ $employee->status == 1 ? 'active' : 'inactive' }}">
+										{{ $employee->status == 1 ? 'Active' : 'Inactive' }}
 									</span>
 								</td>
 							</tr>

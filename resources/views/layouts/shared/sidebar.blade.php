@@ -1,6 +1,7 @@
-<div class="sidebar" id="sidebar">
+
+<div class="sidebar"  id="sidebar">
 	<div class="sidebar-inner slimscroll">
-		<div class="sidebar-menu" id="sidebar-menu">
+		<div class="sidebar-menu" style="margin-top: 20px;" id="sidebar-menu">
 			<ul>
 				<li>
 					<a href="dashboard"><span class="menu-side"><i class="fa-solid fa-house"></i></span>
@@ -14,10 +15,10 @@
 
 					<ul style="display: none;">
 
-						<li><a href="{{ asset('user-list') }}">Users</a></li>
+						<li><a href="{{ asset('regular-user-list') }}">Regular User</a></li>
 						<li><a href="{{ asset('employee-list') }}">Employee</a></li>
-						<li><a href="/positions">Position</a></li>
-					</ul>
+						
+					</ul>	
 				</li>
 
 
@@ -49,21 +50,35 @@
 						</svg></span>
 						<span>Request</span></a>
 				</li>
-
-
 				<li class="submenu">
 					<a href="#"><span class="menu-side"><i class="fa-solid fa-list"></i></span>
-						<span>Reports</span> 
+						<span>Reports</span> <span class="menu-arrow"></span>
 					</a>
-			</ul>
+
+					<ul style="display: none;">
+
+						<li><a href="/report">Report 1</a></li>
+					</ul>
+				</li>
+					
+						<li class="menu-title">Setup</li>
+
+						<li class="submenu">
+							<a href="#"><span class="menu-side"><i class="fa-solid fa-user-group"></i></span>
+								<span>System</span> <span class="menu-arrow"></span>
+							</a>
+
+							<ul style="display: none;">
+								<li><a href="/positions">Position</a></li>
+								<li><a href="/status">Status</a></li>
+							</ul>
+						</li>
+						<li  class="LogoutText">
+						<a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> 
+							<i class='bx bxs-log-out-circle'></i>
+							<span>Logout</span>
+						</a>
+						</li>
 			</div>
-				<li  class="LogoutText">
-                <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> 
-                    <i class='bx bxs-log-out-circle'></i>
-                    <span>Logout</span>
-                </a>
-            	</li>
-			
-		
 	</div>
 </div>

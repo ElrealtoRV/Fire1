@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\UserList;
+use App\Models\RegularList;
 use App\Models\EmployeeList;
 use App\Http\Livewire\TodoList;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\FireList;
 use Illuminate\Http\Request;
 
 
@@ -43,10 +44,12 @@ class DashboardController extends Controller
         $operations = 0;
 
          
-        $users = UserList::count();
-        $userlist = EmployeeList::all();
+        $regularusers = RegularList::count();
+        $regular = RegularList::all();
         $employeeCount = EmployeeList::count();
+        $employees = EmployeeList::all();
         $tasks = Task::all();
+        $fires = FireList::count();
 
         
    
@@ -54,10 +57,12 @@ class DashboardController extends Controller
         return view('dashboard', [
             'time' => $time,
             'operations' => $operations,
-            'users' => $users,
+            'regularusers' => $regularusers,
             'employeeCounts' => $employeeCount,
-            'userlist' => $userlist,
+            'employees' => $employees,
+            'regular' => $regular,
             'tasks' => $tasks,
+            'fires' => $fires,
 
         ]);
     }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\User\UserList;
+use App\Http\Livewire\RegularUser\RegularUserList;
 use App\Http\Livewire\Employee\Employee;
 use App\Http\Livewire\TodoList\TodoList;
 use App\Http\Livewire\Type\Type;
@@ -14,6 +15,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\Authentication\RoleList;
 use App\Http\Livewire\Authentication\PermissionList;
 use App\Http\Livewire\Position\PositionList;
+use App\Http\Livewire\Status\StatusList;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,12 +41,14 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('user', UserList::class);
+    Route::get('regular-user-list', RegularUserList::class);
     Route::get('role', RoleList::class);
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');
     Route::get('user-list', UserList::class)->name('users.list');
     Route::get('employee-list', Employee::class)->name('employee.list');
     Route::get('positions', PositionList::class);
+    Route::get('status',StatusList::class);
     Route::get('todo', TodoList::class);
     Route::get('add-task-modal', AddTaskModal::class);
     Route::get('fire-extinguisher', FireExtinguisher::class);

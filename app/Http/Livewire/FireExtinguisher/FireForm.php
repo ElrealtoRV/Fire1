@@ -63,8 +63,8 @@ class FireForm extends Component
                 'location'     => 'required',
                 'installation_date'     => 'required',
                 'expiration_date'     => 'required',
-                'inspection_findings'         => 'required',
-                'status'     => 'required|digits:9',
+                'inspection_findings'         => 'nullable',
+                'status'     => 'nullable',
                 
             ]);
             
@@ -86,8 +86,8 @@ class FireForm extends Component
                 'location'     => 'required',
                 'installation_date'     => 'required',
                 'expiration_date'         => 'required',
-                'inspection_findings'     => 'required',
-                'status'      => 'required',
+                'inspection_findings'     => 'nullable',
+                'status'      => 'nullable',
             ]);
 
             $fire = FireList::create([
@@ -100,19 +100,20 @@ class FireForm extends Component
                 'inspection_findings'      => $this->inspection_findings,
                 'status'      => $this->status,
             ]);
-
+            
        
 
 
             $action = 'store';
             $message = 'Successfully Created';
         }
-
+        
         $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
         $this->emit('closeFireModal');
         $this->emit('refreshParentFire');
         $this->emit('refreshTable');
+
     }
 
     public function render()
