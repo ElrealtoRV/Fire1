@@ -7,12 +7,30 @@ body {
     color: #333;
 }
 
-
 .head-title {
     display: flex;
+    align-items: stretch;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    
+
+}
+.box-info li i.fa-fire-extinguisher {
+    color: orange;
+}
+
+.box-info li i.bxs-group {
+    color: green;
+}
+
+.box-info li i.fa-briefcase {
+    color: blue;
+}
+
+/* The last fire extinguisher icon with a specific class */
+.box-info li i.fas-fire-extinguisher-red {
+    color: red;
 }
 
 h1 {
@@ -22,6 +40,7 @@ h1 {
 
 
 .box-info {
+    width: 100% ;
     list-style: none;
     display: flex;
     align-items: stretch; /* Stretch items vertically */
@@ -29,6 +48,7 @@ h1 {
     padding: 20px;
     margin: 10px;
 }
+
 
 .box-info li {
     text-align: center;
@@ -71,9 +91,7 @@ h1 {
 }
 
 
-.user-table {
-    margin-top: 20px;
-}
+
 
 table {
     width: 100%;
@@ -126,30 +144,14 @@ button:hover {
 
 /* Userlist dashboard */
 
-.flex-container {
-	display: flex;
-	align-items: stretch;
-	justify-content: space-between;
-	gap: 20px;
-	max-width: 1200px;
-	margin: 20px auto;
-}
-
-
-.container,
-.table-container {
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-.table-container {
-    width: 550px;
-    height: 400px;
+.table-data {
+    width: 560px;
+    height: auto;
     overflow: auto;
-	background-color: #fff;
+	background-color: #ffffff;
 	padding: 20px !important;
-	margin-right: 20px ;
-	margin-top: -20px;
+	margin-left: 30px !important ;
+	margin-top: -20px;  
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
@@ -196,6 +198,7 @@ button:hover {
 /* Additional styling for the search and filter section */
 .user-list {
     margin-bottom: 20px;
+    
 }
 
 #searchInput {
@@ -236,66 +239,111 @@ button:hover {
 .status.pending {
 	background: var(--orange);
 }
+.flex-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.table-data,
+.todo-container {
+    flex-basis: calc(50% - 20px); /* Adjust the width as needed, considering the gap */
+}
 /* Todo List */
 
-.container {
-	max-width: 550px;
-	margin-top: -25px;
-	margin-left: 25px;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	padding: 20px;
+.todo-container {
+    max-width: 100%;
+    margin-top: 20px;
+    margin-left: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
 }
 
 h1 {
-	text-align: center;
-	color: #3498db;
-	font-size: 20px;
+    text-align: center;
+    color: #3498db;
+    font-size: 20px;
 }
 
 .todo-list {
-	list-style: none;
-	padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 .todo-item {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 10px;
-	margin: 10px 0;
-	background-color: #ecf0f1;
-	border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ecf0f1;
+    border-radius: 5px;
 }
 
 .todo-item input[type="checkbox"] {
-	margin-right: 10px;
+    margin-right: 10px;
 }
 
 .todo-item .task {
-	flex-grow: 1;
-	font-size: 16px;
+    flex-grow: 1;
+    font-size: 16px;
 }
 
 .add-task {
-	display: flex;
-	margin-top: 20px;
+    display: flex;
+    margin-top: 20px;
+  
 }
 
 .add-task input[type="text"] {
-	flex-grow: 1;
-	padding: 8px;
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	font-size: 16px;
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .add-task button {
-	padding: 8px 15px;
-	background-color: #3498db;
-	color: #fff;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
+    padding: 8px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.add-task button svg {
+    fill: #fff;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .todo-container {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .add-task {
+        flex-direction: column;
+    }
+
+    .add-task input[type="text"] {
+        margin-top: 10px;
+    }
+
+    .todo-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .todo-item input[type="checkbox"] {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
 }

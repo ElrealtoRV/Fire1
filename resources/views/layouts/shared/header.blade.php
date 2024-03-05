@@ -21,14 +21,15 @@
 <div class="header">
 			<div class="header-left">
 				<a href="/" class="logo">
-					<span style="display: flex; align-items: center;">
+					<span style="display: flex;">
 						<img id="fireExtinguisherIcon" src="{{ asset('assets/img/logoIcon/fire-extinguisher.png') }}" width="50" height="50" alt="Fire Extinguisher Icon" style=" display: none;">
-						<span class="text1">
-							Fire Extinguisher
-							<p style="font-size:10px">Mapping & Monitoring System</p>
+						<span class="text1"style="font-size:15px font-weight:bold;">
+						<p style="font-size:10px; padding-top:1px; margin-bottom:-10px; margin-right:120px;">Norsu </p>Fire Extinguisher
+							<p style="font-size:15px ">MMSS</p>
 						</span>
 					</span>
-				</a>
+</a>
+				
 			</div>
 			<a id="toggle_btn" href="#"><img src="{{ asset('assets/img/icons/bar-icon.svg') }}" alt></a>
 

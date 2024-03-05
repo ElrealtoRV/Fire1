@@ -1,5 +1,6 @@
 
-@if(auth()->user()->hasRole('admin'))
+@if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('Head'))
+
 
 <x-app-layout>
 
@@ -15,38 +16,39 @@
             </div>
         </div>
 
-        <div class="good-morning-blk">
-            <div class="row">   
-                <div class="col-md-6">
-                    <div class="morning-user">
-					<h2>
-							@php
-								$currentTime = now()->hour;
-							@endphp
+	</div>
+	<div class="good-morning-blk">
+		<div class="row">   
+			<div class="col-md-6">
+				<div class="morning-user">
+				<h2>
+					@php
+						$currentTime = now()->hour;
+					@endphp
 
-							@if ($currentTime < 12)
-								Good Morning,
-							@elseif ($currentTime < 18)
-								Good Afternoon,
-							@else
-								Good Evening,
-							@endif
+					@if ($currentTime < 12)
+						Good Morning,
+					@elseif ($currentTime > 18)
+						Good Afternoon,
+					@else
+						Good Evening,
+					@endif
 
-							<span class="text-capitalize">
-								{{ auth()->user()->first_name }}
-								{{ auth()->user()->last_name }}
-							</span>
-						</h2>
-                        <p>Have a nice day at work</p>
-                    </div>
-                </div>
-                <div class="col-md-6 position-blk">
-                    <div class="morning-img">
-                        <img src="assets/img/morning-img-01.png" alt>
-                    </div>
-                </div>
-            </div>
-        </div>
+					<span class="text-capitalize">
+						{{ auth()->user()->first_name }}
+						{{ auth()->user()->last_name }}
+					</span>
+				</h2>
+					<p>Have a nice day at work</p>
+				</div>
+			</div>
+			<div class="col-md-6 position-blk">
+				<div class="morning-img">
+					<img src="assets/img/fire.png" alt>
+				</div>
+			</div>
+		</div>
+	</div>
         <div class="head-title">
 				<div class="left">
         <ul class="box-info">
@@ -93,7 +95,7 @@
 				</span>
 			</li>
 				<li>
-					<i class='bx bxs-dollar-circle' ></i>
+					<i class='con fas fa-fire-extinguisher' ></i>
 					<span class="text">
 						<h3>2543</h3>
 						<p>Expired Fire Extinguisher</p>
@@ -102,9 +104,9 @@
 			</ul> 
     </div>
 	</div>
-	
-	<div class="flex-container">
-	<div class="container">
+
+	@if(auth()->user()->hasRole('admin'))
+
 	<div class="table-data">
 				<div class="order">
 					<div class="user-list">
@@ -165,19 +167,14 @@
 						@endforelse
 						</tbody>
 					</table>
-					</div>
-					</div>
-					
-					
-			
-
+				</div>
+			</div>
+		@livewire('todo-list.todo-list')
+		@livewire('add-task-modal.add-task-modal')
+		@livewire('add-task-modal.view-task-modal', ['tasks' => $tasks])
+			</div>
+			@endif
 				
-
-				</div>
-				</div>
-				@livewire('todo-list.todo-list')
-				@livewire('add-task-modal.add-task-modal')
-				@livewire('add-task-modal.view-task-modal', ['tasks' => $tasks])
 
             <script>
                 // Listen for the 'viewTask' event and show the view modal
@@ -193,3 +190,17 @@
 		
 </x-app-layout>
 @endif
+
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var fireIcons = document.querySelectorAll('.box-info li i.fa-fire-extinguisher');
+
+        if (fireIcons.length > 0) {
+            // Add a specific class to the last fire extinguisher icon
+            fireIcons[fireIcons.length - 1].classList.add('fas-fire-extinguisher-red');
+        }
+    });
+
+
+</script>

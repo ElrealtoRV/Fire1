@@ -20,14 +20,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
 
-        'image', 'first_name', 'middle_name', 'last_name', 'position_id', 'email', 'password','role',
+        'image', 'first_name', 'middle_name', 'last_name', 'position', 'email', 'password','role',
     ];
 
 
-    public function position()
-    {
-        return $this->belongsTo(Position::class, 'position_id', 'id');
-    }
+        public function position()
+        {
+            return $this->belongsTo(Position::class, 'position', 'id');
+        }
 
 
     /**
@@ -50,3 +50,5 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 }
+
+

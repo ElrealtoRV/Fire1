@@ -1,4 +1,5 @@
 
+@if(auth()->user()->hasRole('admin'))
 <div class="modal-content">
     <div class="modal-header">
         <h1 class="modal-title fs-5">
@@ -252,3 +253,4 @@
         </div>
     </form>
 </div>
+@endif

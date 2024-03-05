@@ -36,12 +36,15 @@ return [
     */
 
     'guards' => [
-        'web' => [
-            'driver' => 'session',
-            'provider' => 'users',
-        ],
+    'web' => [
+        'driver' => 'session',
+        'provider' => 'users',
     ],
-
+    'employee' => [
+        'driver' => 'session',
+        'provider' => 'employee',
+    ],
+],
     /*
     |--------------------------------------------------------------------------
     | User Providers
@@ -64,13 +67,17 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+    
+        'employee' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\EmployeeList::class,
+        ],
+    
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
     ],
-
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords

@@ -97,7 +97,7 @@ class RequestForm extends Component
         $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
         $this->emit('closeRequestModal');
-        $this->emit('refreshParentRequest');
+        $this->emit('refreshParentRequest   ');
         $this->emit('refreshTable');
 
     }

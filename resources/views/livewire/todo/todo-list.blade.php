@@ -1,4 +1,4 @@
-<div style="margin-left:630px; margin-top:-260px; width:550px; padding:20px;background-color:#fff; border-radius:8px">
+<div style="margin-left:620px; margin-top:-310px; width:580px;">
     <div class="todo-container">
         <h1>To-Do List</h1>
 

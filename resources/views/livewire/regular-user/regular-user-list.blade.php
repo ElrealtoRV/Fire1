@@ -22,8 +22,10 @@
 									<h3>User List</h3>
 									<div class="doctor-search-blk">
 										<div class="add-group">
+										@if(auth()->user()->hasRole('admin'))
 											<a wire:click="createRegularUser" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
 											</a>
+										@endif
 										</div>
 									</div>
 								</div>
@@ -98,6 +100,7 @@
 				</div>
 			</div>
 		</div>
+		@if(auth()->user()->hasRole('admin'))
 		{{-- Modal --}}
 		<div wire.ignore.self class="modal fade" id="RegularUserModal" tabindex="-1" role="dialog" aria-labelledby="RegularUserModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 			<div class="modal-dialog modal-dialog-centered modal-lg">
@@ -107,3 +110,4 @@
 		@section('custom_script')
 		@include('layouts.scripts.regularuser-scripts')
 		@endsection
+		@endif
