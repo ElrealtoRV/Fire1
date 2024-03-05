@@ -19,12 +19,24 @@
             <div class="row">   
                 <div class="col-md-6">
                     <div class="morning-user">
-                        <h2>
-                            @if ($time < 1) Good Morning, @elseif ($time < 12) Good Afternoon, @else Good Evening, @endif <span class="text-capitalize">
-                                {{ auth()->user()->first_name }}
-                                {{ auth()->user()->last_name }}
-                                </span>
-                        </h2>
+					<h2>
+							@php
+								$currentTime = now()->hour;
+							@endphp
+
+							@if ($currentTime < 12)
+								Good Morning,
+							@elseif ($currentTime < 18)
+								Good Afternoon,
+							@else
+								Good Evening,
+							@endif
+
+							<span class="text-capitalize">
+								{{ auth()->user()->first_name }}
+								{{ auth()->user()->last_name }}
+							</span>
+						</h2>
                         <p>Have a nice day at work</p>
                     </div>
                 </div>

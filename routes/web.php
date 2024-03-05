@@ -7,6 +7,8 @@ use App\Http\Livewire\TodoList\TodoList;
 use App\Http\Livewire\Type\Type;
 use App\Http\Livewire\Location\Location;
 use App\Http\Livewire\Inspection\Inspection;
+use App\Http\Livewire\Request\RequestList;
+use App\Http\Livewire\AddRequest\AddRequest;
 use App\Http\Livewire\AddTaskModal\AddTaskModal;
 use App\Http\Livewire\FireExtinguisher\FireExtinguisher;
 use Illuminate\Support\Facades\Route;
@@ -55,6 +57,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('type', Type::class);
     Route::get('location', Location::class);
     Route::get('inspection', Inspection::class);
+    Route::get('request', RequestList::class);
+    Route::get('add-request', AddRequest::class);
 
 
     
