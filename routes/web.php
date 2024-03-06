@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\User\UserList;
+use App\Http\Livewire\ActivityLog\ActivityLog;
 use App\Http\Livewire\RegularUser\RegularUserList;
 use App\Http\Livewire\Employee\Employee;
 use App\Http\Livewire\TodoList\TodoList;
@@ -46,6 +47,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');
     Route::get('user-list', UserList::class)->name('users.list');
+    Route::get('activity-log', ActivityLog::class);
 });
 Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

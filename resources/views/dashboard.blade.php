@@ -169,9 +169,15 @@
 					</table>
 				</div>
 			</div>
-		@livewire('todo-list.todo-list')
-		@livewire('add-task-modal.add-task-modal')
-		@livewire('add-task-modal.view-task-modal', ['tasks' => $tasks])
+					@if(auth()->user()->hasRole('admin'))
+				@livewire('activity-log.activity-log')
+				@endif
+					@if(auth()->user()->hasRole('Head'))
+				@livewire('todo-list.todo-list')
+				@livewire('add-task-modal.add-task-modal')
+				@livewire('add-task-modal.view-task-modal', ['tasks' => $tasks])
+				@endif
+				
 			</div>
 			@endif
 				
