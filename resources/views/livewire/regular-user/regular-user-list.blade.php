@@ -19,7 +19,7 @@
 						<div class="row align-items-center">
 							<div class="col">
 								<div class="doctor-table-blk">
-									<h3>User List</h3>
+									<h3>Regular User List</h3>
 									<div class="doctor-search-blk">
 										<div class="add-group">
 										@if(auth()->user()->hasRole('admin'))
@@ -54,13 +54,13 @@
 					<div class="table-responsive">
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
-								<tr>
-									<th style="width: 30%">Name</th>
+								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+									<th style="width: 30%; color:white;">Name</th>
 
-									<th style="width: 20%">Status</th>
-									<th style="width: 25%">Department</th>
-									<th>Role</th>
-									<th style="width: 30%; text-align: center;">Action</th>
+									<th style="width: 20%; color:white;">Status</th>
+									<th style="width: 20%; color:white;">Department</th>
+									<th style="width: 20%; color:white;">Role</th>
+									<th style="width: 30%; color:white;text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>

@@ -54,13 +54,11 @@
 					<div class="table-responsive">
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
-								<tr>
-									<th style="width: 30%">Name</th>
-
-									<th style="width: 20%">Position</th>
-									<th style="width: 25%">Email</th>
-									<th>Role</th>
-									<th style="width: 30%; text-align: center;">Action</th>
+								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+									<th style="width: 30%;color:white;">Name</th>
+									<th style="width: 25%;color:white;">Email</th>
+									<th style="color:white;">Position</th>
+									<th style="width: 30%; color:white;text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -69,11 +67,6 @@
 									<td class="text-capitalize">
 										{{ $user->first_name }} {{ $user->middle_name ?? '' }}
 										{{ $user->last_name }}
-									</td>
-
-									<td>
-									{{ $user->position->description }}
-
 									</td>
 									<td>
 										{{ $user->email }}

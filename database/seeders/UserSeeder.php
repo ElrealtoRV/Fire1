@@ -17,8 +17,13 @@ class UserSeeder extends Seeder
             'first_name' => 'Ronver',
             'middle_name' => 'Alburo',
             'last_name' => 'Amper',
-            'position' => 'admin',
+            'age' => '24',
+            'bdate' => 'june 26, 1999',
             'email' => 'admin@gmail.com',
+            'contnum' => '09269325483',
+            'position' => 'admin',
+            'idnum' => '201901160',
+            'office' => 'CSIT Office',
             'password' => bcrypt('admin123')
         ])->assignRole('admin');
 
@@ -27,20 +32,29 @@ class UserSeeder extends Seeder
             'first_name' => 'Jane',
             'middle_name' => 'ehhh',
             'last_name' => 'Doe',
-            'position' => 'head',
+            'age' => '20',
+            'bdate' => 'june 26, 1998',
             'email' => 'head@gmail.com',
+            'contnum' => '09269325482',
+            'position' => 'head',
+            'idnum' => '201901161',
+            'office' => 'BGO',
             'password' => bcrypt('staff123')
         ])->assignRole('head');
 
 
-        User::create([
-            'first_name' => 'Charry',
-            'middle_name' => 'Garol',
-            'last_name' => 'Hetio',
-            'position' => 'maintenance personnel',
-            'email' => 'personnel@gmail.com',
-            'password' => bcrypt('staff123')
-        ])->assignRole('maintenance personnel');
+        // User::create([
+        //     'first_name' => 'Charry',
+        //     'middle_name' => 'Garol',
+        //     'last_name' => 'Hetio',
+        //     'age' => '20',
+        //     'bdate' => 'june 26, 1998',
+        //     'email' => 'personnel@gmail.com',
+        //     'contnum' => '09269325481',
+        //     'idnum' => '201901162',
+        //     'office' => 'BGO',
+        //     'password' => bcrypt('staff123')
+        // ])->assignRole('maintenance personnel');
 
     }
 }

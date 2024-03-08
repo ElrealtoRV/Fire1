@@ -6,6 +6,7 @@ use App\Models\EmployeeList;
 use App\Http\Livewire\TodoList;
 use App\Models\User;
 use App\Models\Task;
+use App\Models\Position;
 use App\Models\FireList;
 use Illuminate\Http\Request;
 
@@ -37,6 +38,8 @@ class DashboardController extends Controller
 
         return redirect('/tasks')->with('success', 'Task deleted successfully!');
     }
+
+
     public function index()
     {
 
@@ -46,23 +49,33 @@ class DashboardController extends Controller
          
         $regularusers = RegularList::count();
         $regular = RegularList::all();
-        $employeeCount = EmployeeList::count();
-        $employees = EmployeeList::all();
+        $userCounts = User::count();
+        $users = User::all();
         $tasks = Task::all();
         $fires = FireList::count();
+        $status = User::all();
+        $positions = Position::all();
 
-        
+        $users = User::whereDoesntHave('roles', function ($query) {
+            $query->where('name', 'admin');
+        })->get();
+   
+        $userCounts = User::whereDoesntHave('roles', function ($query) {
+            $query->where('name', 'admin');
+        })->count();
    
 
         return view('dashboard', [
             'time' => $time,
             'operations' => $operations,
             'regularusers' => $regularusers,
-            'employeeCounts' => $employeeCount,
-            'employees' => $employees,
+            'userCounts' => $userCounts,
+            'users' => $users,
+            'positions' => $positions,
             'regular' => $regular,
             'tasks' => $tasks,
             'fires' => $fires,
+            'status' => $status,
 
         ]);
     }

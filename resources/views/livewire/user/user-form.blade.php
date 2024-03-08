@@ -1,10 +1,12 @@
+
+@if(auth()->user()->hasRole('admin'))
 <div class="modal-content">
-    <div class="modal-header">
-        <h1 class="modal-title fs-5">
+    <div class="modal-header" style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+        <h1 class="modal-title fs-5" style="color: white;">
             @if ($userId)
-                Edit User
+                Edit Employee
             @else
-                Add User
+                Add Employee
             @endif
         </h1>
         <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -21,6 +23,8 @@
     <form wire:submit.prevent="store" enctype="multipart/form-data">
         <div class="modal-body">
             <div class="row">
+           
+                <h5 style=" color: orange; margin-top: -5px; padding:10px; font-size:15px;">Personal Information</h5>
                 <div class="col-md-8">
                     <div class="row">
                         <div class="col-md-4">
@@ -52,10 +56,33 @@
                         <div class="col-md-6">
                             <div class="form-group local-forms">
                                 <label>
-                                    position
+                                    Age
                                     <span class="login-danger">*</span>
                                 </label>
-                                <input class="form-control" type="text" wire:model="position" placeholder />
+                                <input class="form-control" type="number" wire:model="age" placeholder />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group local-forms">
+                                <label>
+                                    Birthdate
+                                    <span class="login-danger">*</span>
+                                </label>
+                                <input class="form-control" type="date" wire:model="bdate" placeholder />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <h5 style=" color: orange; margin-top: -5px; padding:10px; font-size:15px;">Contant Information</h5>
+                        <div class="col-md-6">
+                            <div class="form-group local-forms">
+                                <label>
+                                    Contact Number
+                                    <span class="login-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" wire:model="contnum" placeholder />
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -68,8 +95,46 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                    <h5 style=" color: orange; margin-top: -5px; padding:10px; font-size:15px;">Work Information</h5>
+                        <div class="col-md-6">
+                            <div class="form-group local-forms">
+                                <label>
+                                    Employee ID
+                                    <span class="login-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" wire:model="idnum" placeholder />
+                        </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group local-forms">
+                                <label>Position</label>
+                                <select class="form-control select" wire:model="position">
+
+                                    <option value="" selected>Select a Position</option>
+                                    @foreach ($positions as $position)
+                                        <option value="{{ $position->id }}">
+                                            {{ $position->description }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group local-forms">
+                                <label>
+                                    Office
+                                    <span class="login-danger">*</span>
+                                </label>
+                                <input class="form-control" type="text" wire:model="office" placeholder />
+                            </div>
+                        </div>
+                    </div>
                     @if (!isset($userId))
                         <div class="row">
+                        <h5 style=" color: orange; margin-top: -5px; padding:10px; font-size:15px;">Security Information</h5>
                             <div class="col-md-6">
                                 <div class="form-group local-forms">
                                     <label>
@@ -146,7 +211,8 @@
 						</div> --}}
                             <div style="height: 150px; overflow-y: scroll;">
                                 @if (empty($selectedRoles))
-                                    @forelse ($roles as $role)
+                                @forelse ($filteredRoles as $role)
+
                                         <div class="form-check mb-2">
                                             <input wire:model.defer="roleCheck" type="checkbox" class="form-check-input"
                                                 value="{{ $role->name }}" id="{{ $role->name }}">
@@ -158,7 +224,8 @@
                                         <p>No roles found</p>
                                     @endforelse
                                 @else
-                                    @forelse ($roles as $role)
+                                @forelse ($filteredRoles as $role)
+
                                         <div class="form-check mb-2">
                                             <input wire:model.defer="selectedRoles" type="checkbox"
                                                 class="form-check-input" value="{{ $role->name }}"
@@ -186,3 +253,4 @@
         </div>
     </form>
 </div>
+@endif

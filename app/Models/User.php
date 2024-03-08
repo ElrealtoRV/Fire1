@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\Carbon;
 use Spatie\Permission\Traits\HasRoles;
 
 
@@ -18,17 +19,16 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+    protected $table = 'users';
     protected $fillable = [
 
-        'image', 'first_name', 'middle_name', 'last_name', 'position', 'email', 'password','role',
+        'first_name', 'middle_name', 'last_name','age','bdate','contnum','position', 'idnum','office', 'email', 'password','status',
     ];
 
-
-        public function position()
-        {
-            return $this->belongsTo(Position::class, 'position', 'id');
-        }
-
+    public function Position()
+    {
+        return $this->belongsTo(Position::class, 'position', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

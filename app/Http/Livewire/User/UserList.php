@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use App\Models\Position;
 use Livewire\Component;
 
 class UserList extends Component
@@ -56,15 +57,17 @@ class UserList extends Component
             $users->where(function ($query) {
                 $query->where('first_name', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('last_name', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('position', 'LIKE', '%' . $this->search . '%')
+                    ->orWhere('idnum', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('email', 'LIKE', '%' . $this->search . '%');
             });
         }
 
-        $users = $users->with('roles')->get();
+        $users = $users->whereDoesntHave('roles', function ($query) {
+            $query->where('name', 'admin');
+        })->with('roles')->get();
 
         return view('livewire.user.user-list', [
-            'users' => $users
+            'users' => $users,
         ]); 
     }
 }

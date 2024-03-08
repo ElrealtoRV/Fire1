@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use App\Models\Position;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Component;
@@ -10,7 +11,7 @@ use Spatie\Permission\Models\Role;
 
 class UserForm extends Component
 {
-    public $userId, $first_name, $middle_name, $last_name, $position, $email, $password, $password_confirmation;
+    public $userId, $first_name, $middle_name, $last_name, $age, $bdate, $contnum, $email, $idnum,$position,$office, $password, $password_confirmation;
     public $action = '';  //flash
     public $message = '';  //flash
     public $roleCheck = array();
@@ -35,9 +36,14 @@ class UserForm extends Component
         $this->first_name = $user->first_name;
         $this->middle_name = $user->middle_name;
         $this->last_name = $user->last_name;
-        $this->position = $user->position; // Changed from position to position
+        $this->age = $user->age;
+        $this->bdate = $user->bdate;
+        $this->contnum = $user->contnum;
         $this->email = $user->email;
-
+        $this->idnum = $user->idnum;
+        $this->position = $user->position_id;
+        $this->office = $user->dept; // Changed from position to position
+        $this->password = $user->password; // Changed from position to position
         $this->selectedRoles = $user->getRoleNames()->toArray();
     }
 
@@ -57,8 +63,13 @@ class UserForm extends Component
                 'first_name'    => 'required',
                 'middle_name'   => 'nullable',
                 'last_name'     => 'required',
-                'position'      => 'required',
+                'age'     => 'required',
+                'bdate'     => 'required',
+                'contnum'     => 'required|digits:11',
                 'email'         => ['required', 'email'],
+                'idnum'     => 'required|digits:9',
+                'position'      => 'required',
+                'office'      => 'required',
                 
             ]);
             
@@ -89,18 +100,28 @@ class UserForm extends Component
                 'first_name'    => 'required',
                 'middle_name'   => 'nullable',
                 'last_name'     => 'required',
-                'position'      => 'required',
+                'age'     => 'required',
+                'bdate'     => 'required',
+                'contnum'     => ['required', 'max:11', 'unique:' . User::class],
                 'email'         => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-                'password'      => ['required', 'confirmed', Rules\Password::defaults()],
+                'idnum'     => ['required', 'max:9', 'unique:' . User::class],
+                'position'      => 'required',
+                'office'      => 'required',
+                'password'      => ['required', 'confirmed','min:6', Rules\Password::defaults()],
             ]);
 
             $user = User::create([
                 'first_name'    => $this->first_name,
                 'middle_name'   => $this->middle_name,
-                'last_name'     => $this->last_name,
+                'last_name'      => $this->last_name,
+                'age'      => $this->age,
+                'bdate'      => $this->age,
+                'contnum'      => $this->contnum,
+                'idnum'      => $this->idnum,
                 'position'      => $this->position,
-                'email'         => $this->email,
-                'password'      => Hash::make($this->password)
+                'email'        => $this->email,
+                'office'        => $this->office,
+                'password'    => Hash::make($this->password)
             ]);
 
             $user->assignRole($this->roleCheck);
@@ -119,8 +140,12 @@ class UserForm extends Component
     public function render()
     {
         $roles = Role::all();
+        $positions = Position::all();
+        $filteredRoles = Role::whereIn('name', ['Head', 'Maintenance Personnel'])->get();
         return view('livewire.user.user-form', [
             'roles' => $roles,
+            'filteredRoles' =>  $filteredRoles,
+            'positions' => $positions,
         ]);
     }
 }
