@@ -4,6 +4,8 @@
 		<div class="sidebar-menu" style="margin-top: 20px;" id="sidebar-menu">
 			<ul>
 			@if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('Head'))
+			<li class="menu-title">Core</li>
+
 				<li>
 					<a href="dashboard"><span class="menu-side"><i class="fa-solid fa-house"></i></span>
 						<span>Dashboard</span></a>
@@ -40,9 +42,9 @@
 					<ul style="display: none;">
 
 						<li><a href="{{ asset('fire-extinguisher') }}">Fire Extinguisher</a></li>
-						<li><a href="{{ asset('type') }}">Type</a></li>
-						<li><a href="{{ asset('location') }}">Location</a></li>
-						<li><a href="{{ asset('inspection ') }}">Inspection Findings</a></li>
+						<!-- <li><a href="{{ asset('type') }}">Type</a></li>
+						<li><a href="{{ asset('location') }}">Location</a></li> -->
+						<!-- <li><a href="{{ asset('inspection ') }}">Inspection Findings</a></li> -->
 					</ul>
 				</li>
 				@endif
@@ -76,27 +78,55 @@
 						<li><a href="/report">Report 1</a></li>
 					</ul>
 				</li>
-				@if(auth()->user()->hasRole('admin'))
-						<li class="menu-title">Setup</li>
+				
+						<li class="menu-title">System</li>
 
 						<li class="submenu">
 							<a href="#"><span class="menu-side"><i class="fa-solid fa-user-group"></i></span>
-								<span>System</span> <span class="menu-arrow"></span>
+								<span>Setup</span> <span class="menu-arrow"></span>
 							</a>
 
 							<ul style="display: none;">
+							@if(auth()->user()->hasRole('admin'))
 								<li><a href="/positions">Position</a></li>
+							@endif
+							
+							@if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('Head'))
 								<li><a href="/status">Status</a></li>
+								<li><a href="{{ asset('type') }}">Type</a></li>
+								<li><a href="{{ asset('location') }}">Location</a></li>
+							@endif
+							</ul>
+						</li>
+						@if(auth()->user()->hasRole('admin'))
+						<li>
+							<a href="setting"><span class="menu-side"><i class="fas fa-cog"></i></span>
+								<span>Setting</span>
+							</a>
+						</li>
+						@endif
+						@if(auth()->user()->hasRole('Head'))
+						
+
+						<li class="submenu">
+							<a href="#"><span class="menu-side"><i class="fa-solid fa-cog"></i></span>
+								<span>Setting</span> <span class="menu-arrow"></span>
+							</a>
+
+							<ul style="display: none;">
+								<li><a href="setting">setting</a></li>
+								<li><a href="/profile">Profile</a></li>
 							</ul>
 						</li>
 						@endif
-						<li  class="LogoutText">
+						<li  class="submenu">
 						<a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> 
 							<i class='bx bxs-log-out-circle'></i>
 							<span>Logout</span>
 						</a>
 						</li>
 			@endif
+			</ul>
 			</div>
 	</div>
 </div>

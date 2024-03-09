@@ -6,11 +6,10 @@ use Livewire\Component;
 use App\Models\FireList;
 use App\Models\TypeList;
 use App\Models\LocationList;
-use App\Models\FindingList;
 
 class FireForm extends Component
 {
-    public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $inspection_findings, $status,$position_id,$dept, $password;
+    public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $description, $status,$position_id,$dept, $password;
     public $action = '';  //flash
     public $message = '';  //flashSSS
     public $fireCheck = array();
@@ -38,7 +37,7 @@ class FireForm extends Component
         $this->location = $fire->location;
         $this->installation_date = $fire->installation_date;
         $this->expiration_date = $fire->expiration_date;
-        $this->inspection_findings = $fire->inspection_findings;
+        $this->description = $fire->description;
         $this->status = $fire->status;
 
         $this->selectedFire = $fire->getFireNames()->toArray();
@@ -59,11 +58,11 @@ class FireForm extends Component
             $data = $this->validate([
                 'type'    => 'required',
                 'firename'   => 'required',
-                'serial_number'     => 'required',
+                'serial_number'     => 'required|digits:7',
                 'location'     => 'required',
                 'installation_date'     => 'required',
                 'expiration_date'     => 'required',
-                'inspection_findings'         => 'nullable',
+                'description'         => 'nullable',
                 'status'     => 'nullable',
                 
             ]);
@@ -82,11 +81,11 @@ class FireForm extends Component
             $this->validate([
                 'type'    => 'required',
                 'firename'   => 'required',
-                'serial_number'     => 'required',
+                'serial_number'     => 'required|digits:7',
                 'location'     => 'required',
                 'installation_date'     => 'required',
                 'expiration_date'         => 'required',
-                'inspection_findings'     => 'nullable',
+                'description'     => 'nullable',
                 'status'      => 'nullable',
             ]);
 
@@ -97,7 +96,7 @@ class FireForm extends Component
                 'location'      => $this->location,
                 'installation_date'      => $this->installation_date,
                 'expiration_date'      => $this->expiration_date,
-                'inspection_findings'      => $this->inspection_findings,
+                'description'      => $this->description,
                 'status'      => $this->status,
             ]);
             
@@ -121,13 +120,11 @@ class FireForm extends Component
         $fire =FireList::all();
         $types =TypeList::all();
         $locations =LocationList::all();
-        $inspections =FindingList::all();
 
         return view('livewire.fire-extinguisher.fire-form', [
             'fire' => $fire,
             'types' => $types,
             'locations' => $locations,
-            'inspections' => $inspections,
 
         ]);
     }

@@ -59,7 +59,6 @@
 
 									<th style="width: 20%; color:white;">Status</th>
 									<th style="width: 20%; color:white;">Department</th>
-									<th style="width: 20%; color:white;">Role</th>
 									<th style="width: 30%; color:white;text-align: center;">Action</th>
 								</tr>
 							</thead>
@@ -74,11 +73,6 @@
                                     <td>{{ optional($user->Status)->description }}</td>
 									<td>
 										{{ $user->dept }}
-									</td>
-									<td>
-										@foreach($user->roles as $role)
-										<li>{{ $role->name }}</li>
-										@endforeach
 									</td>
 									<td class="text-center">
 										<div class="btn-group" role="group">

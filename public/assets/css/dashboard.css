@@ -13,6 +13,7 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 20px;
+    margin-left: 20px;
     
 
 }
@@ -39,6 +40,7 @@ h1 {
 }
 
 
+
 .box-info {
     width: 100% ;
     list-style: none;
@@ -47,6 +49,7 @@ h1 {
     justify-content: space-around;
     padding: 20px;
     margin: 10px;
+   
 }
 
 
@@ -145,12 +148,12 @@ button:hover {
 /* Userlist dashboard */
 
 .table-data {
-    width: 560px;
+    width: 550px;
     height: auto;
     overflow: auto;
 	background-color: #ffffff;
 	padding: 20px !important;
-	margin-left: 30px !important ;
+	margin-left: 55px !important ;
 	margin-top: -20px;  
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -202,10 +205,12 @@ button:hover {
 }
 
 #searchInput {
-    padding: 10px;
+    padding: 15px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    margin-right: 10px;
+    margin-left: 270px;
+    height: 20px;
+    margin-top: 15px;
 }
 
 #filterDropdown {
@@ -254,7 +259,7 @@ button:hover {
 
 .todo-container {
     max-width: 100%;
-    margin-top: 20px;
+    margin-top: 30px;
     margin-left: 25px;
     background-color: #ffffff;
     border-radius: 8px;

@@ -11,7 +11,7 @@ use Spatie\Permission\Models\Role;
 
 class UserForm extends Component
 {
-    public $userId, $first_name, $middle_name, $last_name, $age, $bdate, $contnum, $email, $idnum,$position,$office, $password, $password_confirmation;
+    public $userId, $first_name, $middle_name, $last_name, $age, $bdate, $contnum, $email, $idnum, $position_id, $office, $password, $password_confirmation;
     public $action = '';  //flash
     public $message = '';  //flash
     public $roleCheck = array();
@@ -41,42 +41,39 @@ class UserForm extends Component
         $this->contnum = $user->contnum;
         $this->email = $user->email;
         $this->idnum = $user->idnum;
-        $this->position = $user->position_id;
-        $this->office = $user->dept; // Changed from position to position
-        $this->password = $user->password; // Changed from position to position
+        $this->position_id = $user->position_id; // Changed from 'position' to 'position_id'
+        $this->office = $user->dept;
+        $this->password = $user->password;
         $this->selectedRoles = $user->getRoleNames()->toArray();
     }
 
     public function store()
     {
-          if (is_object($this->selectedRoles)) {
+        if (is_object($this->selectedRoles)) {
             $this->selectedRoles = json_decode(json_encode($this->selectedRoles), true);
         }
-
+    
         if (empty($this->roleCheck)) {
             $this->roleCheck = array_map('strval', $this->selectedRoles);
         }
-
+    
         if ($this->userId) {
-
             $data = $this->validate([
-                'first_name'    => 'required',
-                'middle_name'   => 'nullable',
-                'last_name'     => 'required',
-                'age'     => 'required',
-                'bdate'     => 'required',
-                'contnum'     => 'required|digits:11',
-                'email'         => ['required', 'email'],
-                'idnum'     => 'required|digits:9',
-                'position'      => 'required',
-                'office'      => 'required',
-                
+                'first_name' => 'required',
+                'middle_name' => 'nullable',
+                'last_name' => 'required',
+                'age' => 'required',
+                'bdate' => 'required',
+                'contnum' => 'required|digits:11',
+                'email' => ['required', 'email'],
+                'idnum' => 'required|digits:9',
+                'position_id' => 'required', // Changed from 'position' to 'position_id'
+                'office' => 'required',
             ]);
-            
-            
+    
             $user = User::find($this->userId);
             $user->update($data);
-
+    
             if (!empty($this->password)) {
                 $this->validate([
                     'password' => ['required', 'confirmed', Rules\Password::defaults()],
@@ -86,57 +83,54 @@ class UserForm extends Component
                     'password' => Hash::make($this->password),
                 ]);
             }
-            $user = User::find($this->userId);
-            $user->update($data);
-
-
+    
+            $user->position_id = $this->position_id; // Assign the new position_id value
+            $user->save();
             $user->syncRoles($this->roleCheck);
-
+    
             $action = 'edit';
             $message = 'Successfully Updated';
         } else {
-
             $this->validate([
-                'first_name'    => 'required',
-                'middle_name'   => 'nullable',
-                'last_name'     => 'required',
-                'age'     => 'required',
-                'bdate'     => 'required',
-                'contnum'     => ['required', 'max:11', 'unique:' . User::class],
-                'email'         => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-                'idnum'     => ['required', 'max:9', 'unique:' . User::class],
-                'position'      => 'required',
-                'office'      => 'required',
-                'password'      => ['required', 'confirmed','min:6', Rules\Password::defaults()],
+                'first_name' => 'required',
+                'middle_name' => 'nullable',
+                'last_name' => 'required',
+                'age' => 'required',
+                'bdate' => 'required',
+                'contnum' => ['required', 'max:11', 'unique:' . User::class],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+                'idnum' => ['required', 'max:9', 'unique:' . User::class],
+                'position_id' => 'required', // Changed from 'position' to 'position_id'
+                'office' => 'required',
+                'password' => ['required', 'confirmed', 'min:6', Rules\Password::defaults()],
             ]);
-
+    
             $user = User::create([
-                'first_name'    => $this->first_name,
-                'middle_name'   => $this->middle_name,
-                'last_name'      => $this->last_name,
-                'age'      => $this->age,
-                'bdate'      => $this->age,
-                'contnum'      => $this->contnum,
-                'idnum'      => $this->idnum,
-                'position'      => $this->position,
-                'email'        => $this->email,
-                'office'        => $this->office,
-                'password'    => Hash::make($this->password)
+                'first_name' => $this->first_name,
+                'middle_name' => $this->middle_name,
+                'last_name' => $this->last_name,
+                'age' => $this->age,
+                'bdate' => $this->bdate,
+                'contnum' => $this->contnum,
+                'idnum' => $this->idnum,
+                'position_id' => $this->position_id, // Changed from 'position' to 'position_id'
+                'email' => $this->email,
+                'office' => $this->office,
+                'password' => Hash::make($this->password)
             ]);
-
+    
             $user->assignRole($this->roleCheck);
-
+    
             $action = 'store';
             $message = 'Successfully Created';
         }
-
+    
         $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
         $this->emit('closeUserModal');
         $this->emit('refreshParentUser');
         $this->emit('refreshTable');
     }
-
     public function render()
     {
         $roles = Role::all();

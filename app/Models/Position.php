@@ -14,4 +14,9 @@ class Position extends Model
     protected $table = 'positions';
     protected $primaryKey = 'id';
     protected $fillable = [ 'description' ];
+
+            public function users()
+        {
+            return $this->hasMany(User::class);
+        }
 }

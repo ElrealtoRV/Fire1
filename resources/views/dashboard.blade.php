@@ -17,7 +17,7 @@
         </div>
         
 
-		<div class="good-morning-blk">
+		<div class="good-morning-blk" >
             <div class="row">   
                 <div class="col-md-6">
                     <div class="morning-user">
@@ -49,6 +49,7 @@
                 </div>
             </div>
         </div>
+
 
 		<div class="head-title">
             <div class="left">
@@ -122,8 +123,8 @@
 									<div class="user-list">
 										<h1>Lists of Users & Employee</h1>
 										<form method="get" action="/dashboard">
-										<input type="text" id="searchInput" placeholder="Search...">
-										<i class='bx bx-search search-icon' ></i>
+										<input type="text"  id="searchInput" placeholder="Search...">
+										<i class='bx bx-search search-icon'></i>
 										</form>
 										</div>
 									<table>
@@ -173,9 +174,9 @@
 												@endforeach</td>
 										<td>
 										
-										<span style="display: inline-block; padding: 5px; border-radius: 20%; text-align: center; 
+										<span style="display: inline-block; padding: 5px; border-radius: 10%; text-align: center; 
 													background-color: {{ $user->status == 'active' ? 'green' : 'orange' }};
-													color: white; vertical-align: middle;">
+													color: white;">
 											{{ $user->status == 'Active' ? 'Active' : 'Inactive' }}
 										</span>
 										</td>
@@ -190,7 +191,7 @@
 						</div>
 					</div>
 					@endif	
-
+					
 							@if(auth()->user()->hasRole('admin'))
 								@livewire('activity-log.activity-log')
 							@endif
@@ -200,7 +201,7 @@
 								@livewire('add-task-modal.add-task-modal')
 								@livewire('add-task-modal.view-task-modal', ['tasks' => $tasks])
 							@endif
-		</div>
+					</div>
 
 		<script>
 
@@ -222,6 +223,7 @@
 			Livewire.on('taskAdded', function () {
 				Livewire.emit('refreshComponent', 'todo-list');
 			});
+
 			</script>
     </x-app-layout>
 @endif

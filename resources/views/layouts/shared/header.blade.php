@@ -16,6 +16,9 @@
 		top: 10px;
 		right: 10px;
 	}
+	.toggle{
+		margin-top: 25px;
+	}
 </style>
 
 <div class="header">
@@ -28,10 +31,10 @@
 							<p style="font-size:15px ">MMSS</p>
 						</span>
 					</span>
-</a>
+				</a>
 				
 			</div>
-			<a id="toggle_btn" href="#"><img src="{{ asset('assets/img/icons/bar-icon.svg') }}" alt></a>
+			<a id="toggle_btn"  href="#"><img src="{{ asset('assets/img/icons/bar-icon.svg') }}" alt></a>
 
 
 
@@ -84,8 +87,40 @@
 
 </div>
 <script>
-    document.getElementById('toggle_btn').addEventListener('click', function () {
-        var icon = document.getElementById('fireExtinguisherIcon');
-        icon.style.display = (icon.style.display === 'none' || icon.style.display === '') ? 'inline' : 'none';
-    });
-</script>
+        document.getElementById('toggle_btn').addEventListener('click', function () {
+            var icon = document.getElementById('fireExtinguisherIcon');
+            icon.style.display = (icon.style.display === 'none' || icon.style.display === '') ? 'inline' : 'none';
+        });
+
+        document.getElementById('searchForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            
+            // Get the search query and other parameters
+            var searchQuery = document.getElementById('searchQuery').value;
+            var position_id = document.getElementById('positionDropdown').value;
+            // Get values for other search parameters
+
+            // Send an AJAX request to the backend
+            // Adjust the URL and data based on your backend implementation
+            // Example using fetch API
+            fetch('/search', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    searchQuery: searchQuery,
+                    position_id: position_id,
+                    // Include other search parameters in the body
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Update the UI with the search results
+                console.log(data);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>

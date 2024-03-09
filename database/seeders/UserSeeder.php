@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
             'bdate' => 'june 26, 1999',
             'email' => 'admin@gmail.com',
             'contnum' => '09269325483',
-            'position' => 'admin',
+            'position_id' => 'admin',
             'idnum' => '201901160',
             'office' => 'CSIT Office',
             'password' => bcrypt('admin123')
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
             'bdate' => 'june 26, 1998',
             'email' => 'head@gmail.com',
             'contnum' => '09269325482',
-            'position' => 'head',
+            'position_id' => 'head',
             'idnum' => '201901161',
             'office' => 'BGO',
             'password' => bcrypt('staff123')

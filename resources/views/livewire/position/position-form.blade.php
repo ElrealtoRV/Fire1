@@ -1,6 +1,6 @@
 <div class="modal-content">
-    <div class="modal-header">
-        <h1 class="modal-title fs-5">
+    <div class="modal-header" style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+        <h1 class="modal-title fs-5" style="color: white;">
             @if ($positionId)
             Edit Position
             @else

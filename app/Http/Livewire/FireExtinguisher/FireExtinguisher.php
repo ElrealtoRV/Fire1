@@ -6,7 +6,6 @@ use Livewire\Component;
 use App\Models\FireList;
 use App\Models\TypeList;
 use App\Models\LocationList;
-use App\Models\FindingList;
 
 class FireExtinguisher extends Component
 {
@@ -54,7 +53,6 @@ class FireExtinguisher extends Component
         $fire = FireList::with('fireex')->get();
         $types = TypeList::query();
         $locations = FireList::with('FireLocation')->get();
-        $inspections = FireList::with('FireFinding')->get();
         
 
         
@@ -73,7 +71,6 @@ class FireExtinguisher extends Component
                 'fire' => $fire,
                 'types' => $types,
                 'locations' => $locations,
-                'inspections' => $inspections,
             ]); 
     }
 }

@@ -22,13 +22,14 @@ class User extends Authenticatable
     protected $table = 'users';
     protected $fillable = [
 
-        'first_name', 'middle_name', 'last_name','age','bdate','contnum','position', 'idnum','office', 'email', 'password','status',
+        'first_name', 'middle_name', 'last_name','age','bdate','contnum','position_id', 'idnum','office', 'email', 'password','status',
     ];
 
-    public function Position()
-    {
-        return $this->belongsTo(Position::class, 'position', 'id');
-    }
+            public function position()
+        {
+            return $this->belongsTo(Position::class);
+        }
+
 
     /**
      * The attributes that should be hidden for serialization.

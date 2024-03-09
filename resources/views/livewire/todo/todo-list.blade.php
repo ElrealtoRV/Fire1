@@ -1,4 +1,12 @@
-<div style="margin-left:620px; margin-top:-310px; width:580px;">
+<style>
+button{
+    margin-left: 10px;
+    width: auto;
+}
+    
+</style>
+
+<div style="margin-left:640px; margin-top:-5px; width:580px;">
     <div class="todo-container">
         <h1>To-Do List</h1>
 

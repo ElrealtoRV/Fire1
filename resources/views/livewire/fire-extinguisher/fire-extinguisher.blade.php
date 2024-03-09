@@ -53,16 +53,16 @@
 					<div class="table-responsive">
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
-								<tr>
-									<th style="width: 30%">Type</th>
-									<th style="width: 30%">Name</th>
-									<th style="width: 30%">Serial Number</th>
-									<th style="width: 30%">Location</th>
-									<th style="width: 30%">Installation Date</th>
-									<th style="width: 30%">Expiration Date</th>
-									<th style="width: 50%">Inspection Finding</th>
-									<th style="width: 30%">Status</th>
-									<th style="width: 30%; text-align: center;">Action</th>
+								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+									<th style="width: auto; color:white;">Type</th>
+									<th style="width: auto; color:white;">Name</th>
+									<th style="width: 20%;  color:white;">Serial Number</th>
+									<th style="width:auto; color:white;">Location</th>
+									<th style="width: auto; color:white;">Installation Date</th>
+									<th style="width: auto; color:white;">Expiration Date</th>
+									<th style="width: auto; color:white;">Description</th>
+									<th style="width: 10%; color:white;">Status</th>
+									<th style="width: 10%; text-align: center;color:white;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -74,7 +74,7 @@
                                 <td>{{ optional($fires->FireLocation)->description }}</td>
                                 <td>{{  $fires->installation_date }}</td>
                                 <td>{{  $fires->expiration_date }}</td>
-								<td class="scrollable-cell" id="truncate-text">{{ optional($fires->FireFinding)->description }}</td>
+								<td>{{  $fires->description }}</td>
                                 <td>{{  $fires->status }}</td>
 										
 									

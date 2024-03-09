@@ -6,6 +6,7 @@ use App\Http\Livewire\RegularUser\RegularUserList;
 use App\Http\Livewire\Employee\Employee;
 use App\Http\Livewire\TodoList\TodoList;
 use App\Http\Livewire\Type\Type;
+use App\Http\Livewire\Setting\Setting;
 use App\Http\Livewire\Location\Location;
 use App\Http\Livewire\Inspection\Inspection;
 use App\Http\Livewire\Request\RequestList;
@@ -61,6 +62,7 @@ Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('request', RequestList::class);
     Route::get('add-request', AddRequest::class);
     Route::get('fire-extinguisher', FireExtinguisher::class);
+    Route::get('setting', setting::class);
 
 });
 

@@ -43,9 +43,9 @@
 					<div class="table-responsive">
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
-								<tr>
-									<td>Position</td>
-									<th style="width: 30%; text-align: center;">Action</th>
+								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+									<td style="color:white;">Position</td>
+									<th style="width: 30%; text-align: center; color:white;">Action</th>
 								</tr>
 							</thead>
 							<tbody>

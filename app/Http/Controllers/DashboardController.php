@@ -63,7 +63,7 @@ class DashboardController extends Controller
         $userCounts = User::whereDoesntHave('roles', function ($query) {
             $query->where('name', 'admin');
         })->count();
-   
+        
 
         return view('dashboard', [
             'time' => $time,

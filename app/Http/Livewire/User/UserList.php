@@ -58,7 +58,8 @@ class UserList extends Component
                 $query->where('first_name', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('last_name', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('idnum', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('email', 'LIKE', '%' . $this->search . '%');
+                    ->orWhere('email', 'LIKE', '%' . $this->search . '%')
+                    ->orWhere('position_id', 'LIKE', '%' . $this->search . '%');
             });
         }
 

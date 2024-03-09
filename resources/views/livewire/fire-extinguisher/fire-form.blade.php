@@ -1,7 +1,7 @@
 
 <div class="modal-content">
-    <div class="modal-header">
-        <h1 class="modal-title fs-5">
+    <div class="modal-header" style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
+        <h1 class="modal-title fs-5" style="color: white;">
             @if ($fireId)
                 Edit Fire Extinguisher
             @else
@@ -104,18 +104,11 @@
                         <div class="col-md-6">
                             <div class="form-group local-forms">
                                 <label>
-                                 Inspection Findings
+                                 Description
                                     <span class="login-danger">*</span>
                                 </label>
-                                <select class="form-control select" wire:model="inspection_findings">
-
-                                <option value="" selected>Select a Finding</option>
-                                @foreach ($inspections as $inspection)
-                                    <option value="{{ $inspection->id }}">
-                                        {{ $inspection->description }}
-                                    </option>
-                                @endforeach
-                                </select>
+                                <input class="form-control" type="text" wire:model="description" placeholder />
+                               
                                 
                             </div>
                         </div>

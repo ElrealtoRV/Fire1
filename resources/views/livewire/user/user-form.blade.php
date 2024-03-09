@@ -110,7 +110,7 @@
                         <div class="col-md-6">
                             <div class="form-group local-forms">
                                 <label>Position</label>
-                                <select class="form-control select" wire:model="position">
+                                <select class="form-control select" wire:model="position_id">
 
                                     <option value="" selected>Select a Position</option>
                                     @foreach ($positions as $position)

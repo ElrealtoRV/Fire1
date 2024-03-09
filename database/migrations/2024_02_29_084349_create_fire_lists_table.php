@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('location');
             $table->date('installation_date');
             $table->date('expiration_date')->default(now());
-            $table->text('inspection_findings')->nullable();
+            $table->text('description')->nullable();
             $table->string('status');
             $table->timestamps();
         });
