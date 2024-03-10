@@ -19,7 +19,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Livewire\Authentication\RoleList;
 use App\Http\Livewire\Authentication\PermissionList;
 use App\Http\Livewire\Position\PositionList;
-use App\Http\Livewire\Status\StatusList;
+use App\Http\Livewire\Affiliation\AffiliationList;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,20 +47,16 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('role', RoleList::class);
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');
-    Route::get('user-list', UserList::class)->name('users.list');
     Route::get('activity-log', ActivityLog::class);
 });
 Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('regular-user-list', RegularUserList::class);
-    Route::get('employee-list', Employee::class)->name('employee.list');
     Route::get('positions', PositionList::class);
-    Route::get('status',StatusList::class);
+    Route::get('affiliation',AffiliationList::class);
     Route::get('type', Type::class);
     Route::get('location', Location::class);
     Route::get('inspection', Inspection::class);
-    Route::get('request', RequestList::class);
-    Route::get('add-request', AddRequest::class);
     Route::get('fire-extinguisher', FireExtinguisher::class);
     Route::get('setting', setting::class);
 
@@ -69,5 +65,7 @@ Route::group(['middleware' => ['role:admin|Head']], function () {
 Route::group(['middleware' => ['role:Head']], function () {
     Route::get('todo', TodoList::class);
     Route::get('add-task-modal', AddTaskModal::class);
+    Route::get('request', RequestList::class);
+    Route::get('add-request', AddRequest::class);
 });
 require __DIR__.'/auth.php';

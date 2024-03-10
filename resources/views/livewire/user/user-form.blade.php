@@ -1,5 +1,5 @@
 
-@if(auth()->user()->hasRole('admin'))
+@if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('Head'))
 <div class="modal-content">
     <div class="modal-header" style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
         <h1 class="modal-title fs-5" style="color: white;">
@@ -113,7 +113,7 @@
                                 <select class="form-control select" wire:model="position_id">
 
                                     <option value="" selected>Select a Position</option>
-                                    @foreach ($positions as $position)
+                                    @foreach ( $filteredPos as $position)
                                         <option value="{{ $position->id }}">
                                             {{ $position->description }}
                                         </option>

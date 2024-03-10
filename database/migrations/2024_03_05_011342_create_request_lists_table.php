@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('request_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->unsignedBigInteger('type'); // Changing the data type
+            $table->foreign('type')->references('id')->on('type_lists');
             $table->string('firename');
             $table->string('serial_number');
-            $table->string('location');
-            $table->string('request');
+            $table->unsignedBigInteger('location'); // Changing the data type
+            $table->foreign('location')->references('id')->on('location_lists');
+            $table->unsignedBigInteger('request'); // Changing the data type
+            $table->foreign('request')->references('id')->on('requests');
             $table->timestamps();
         });
     }

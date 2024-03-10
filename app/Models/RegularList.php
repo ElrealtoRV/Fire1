@@ -15,13 +15,13 @@ class RegularList extends Model
     protected $guard_name = 'web';
     protected $table = 'regular_lists';
     protected $fillable = [
-       'first_name', 'middle_name', 'last_name','age','bdate','contnum', 'idnum','status','dept', 'email', 'password',
+       'first_name', 'middle_name', 'last_name','age','bdate','contnum', 'idnum','affiliation','dept', 'email', 'password',
      ];
 
 
-     public function Status()
+     public function Affiliation()
      {
-         return $this->belongsTo(StatusLists::class, 'status', 'id');
+         return $this->belongsTo(AffiliationLists::class, 'affiliation', 'id');
      }
 
 

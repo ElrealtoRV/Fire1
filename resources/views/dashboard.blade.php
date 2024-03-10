@@ -80,6 +80,7 @@
                         </span>
                     
                         </li>
+					
 						<li>
 							@if(is_array($userCounts) || is_object($userCounts))
 								@forelse ($userCounts as $userCount)
@@ -104,6 +105,7 @@
 								</span>
 							@endif
 						</li>
+					
 
 							<li>
 								<i class='con fas fa-fire-extinguisher' ></i>

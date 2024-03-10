@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Livewire\Component;
 use Spatie\Permission\Models\Role;
+use Carbon\Carbon;
 
 class UserForm extends Component
 {
@@ -64,9 +65,9 @@ class UserForm extends Component
                 'last_name' => 'required',
                 'age' => 'required',
                 'bdate' => 'required',
-                'contnum' => 'required|digits:11',
-                'email' => ['required', 'email'],
-                'idnum' => 'required|digits:9',
+                'contnum' => ['required', 'max:11', 'unique:users,contnum'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'idnum' => ['required', 'max:9', 'unique:users,idnum'],
                 'position_id' => 'required', // Changed from 'position' to 'position_id'
                 'office' => 'required',
             ]);
@@ -97,9 +98,9 @@ class UserForm extends Component
                 'last_name' => 'required',
                 'age' => 'required',
                 'bdate' => 'required',
-                'contnum' => ['required', 'max:11', 'unique:' . User::class],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
-                'idnum' => ['required', 'max:9', 'unique:' . User::class],
+                'contnum' => ['required', 'max:11', 'unique:users,contnum'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
+                'idnum' => ['required', 'max:9', 'unique:users,idnum'],
                 'position_id' => 'required', // Changed from 'position' to 'position_id'
                 'office' => 'required',
                 'password' => ['required', 'confirmed', 'min:6', Rules\Password::defaults()],
@@ -135,10 +136,12 @@ class UserForm extends Component
     {
         $roles = Role::all();
         $positions = Position::all();
+        $filteredPos = Position::where('description', '!=', 'Admin')->get();
         $filteredRoles = Role::whereIn('name', ['Head', 'Maintenance Personnel'])->get();
         return view('livewire.user.user-form', [
             'roles' => $roles,
             'filteredRoles' =>  $filteredRoles,
+            'filteredPos' =>   $filteredPos,
             'positions' => $positions,
         ]);
     }

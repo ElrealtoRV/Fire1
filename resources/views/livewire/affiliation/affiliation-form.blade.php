@@ -1,10 +1,10 @@
 <div class="modal-content">
     <div class="modal-header">
         <h1 class="modal-title fs-5">
-            @if ($statusId)
-            Edit Status
+            @if ($affiliationId)
+            Edit Affiliation
             @else
-            Add Status
+            Add Affiliation
             @endif
         </h1>
         <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="form-group local-forms">
                         <label>
-                            Status
+                        Affiliation
                             <span class="login-danger">*</span>
                         </label>
                         <input class="form-control" type="text" wire:model="description" placeholder />

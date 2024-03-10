@@ -49,7 +49,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($positions as $position)
+								@foreach ($filteredPos as $position)
 									<tr>
 										<td>
 											{{ $position->description }}

@@ -54,7 +54,7 @@ class RegularUserList extends Component
     public function render()
     {
         $regularusers = RegularList::query();
-        $regular = RegularList::with('Status')->get();
+        $regular = RegularList::with('Affiliation')->get();
 
 
         if (!empty($this->search)) {
@@ -62,7 +62,7 @@ class RegularUserList extends Component
                 $query->where('first_name', 'LIKE', '%' . $this->search . '%')
                     ->orWhere('last_name', 'LIKE', '%' . $this->search . '%') 
                     ->orWhere('email', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('status', 'LIKE', '%' . $this->search . '%')
+                    ->orWhere('affiliation', 'LIKE', '%' . $this->search . '%')
                     ->orWhereHas('dept', function ($deptQuery) {
                         $deptQuery->where('description', 'LIKE', '%' . $this->search . '%');
                     });

@@ -53,7 +53,7 @@ class DashboardController extends Controller
         $users = User::all();
         $tasks = Task::all();
         $fires = FireList::count();
-        $status = User::all();
+        $affiliations = User::all();
         $positions = Position::all();
 
         $users = User::whereDoesntHave('roles', function ($query) {
@@ -75,7 +75,7 @@ class DashboardController extends Controller
             'regular' => $regular,
             'tasks' => $tasks,
             'fires' => $fires,
-            'status' => $status,
+            'affiliations' => $affiliations,
 
         ]);
     }

@@ -52,6 +52,7 @@ class UserList extends Component
     public function render()
     {
         $users = User::query();
+        
 
         if (!empty($this->search)) {
             $users->where(function ($query) {

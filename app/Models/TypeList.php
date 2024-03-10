@@ -14,4 +14,13 @@ class TypeList extends Model
     protected $table = 'type_lists';
     protected $primaryKey = 'id';
     protected $fillable = [ 'description' ];
+
+    public function Type()
+    {
+        return $this->hasMany(FireList::class, 'type', 'id');
+    }
+    public function RequestType()
+    {
+        return $this->hasMany(Request::class, 'type', 'id');
+    }
 }

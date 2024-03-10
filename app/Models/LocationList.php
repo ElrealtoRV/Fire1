@@ -13,4 +13,13 @@ class LocationList extends Model
     protected $table = 'location_lists';
     protected $primaryKey = 'id';
     protected $fillable = [ 'description' ];
+
+    public function Location()
+    {
+        return $this->hasMany(FireList::class, 'location', 'id');
+    }
+    public function RequestLocation()
+    {
+        return $this->hasMany(RequestLists::class, 'location', 'id');
+    }
 }

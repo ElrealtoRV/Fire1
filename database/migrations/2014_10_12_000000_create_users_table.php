@@ -16,15 +16,16 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name');
             $table->string('last_name');
-            $table->string('age');
+            $table->integer('age'); // Corrected data type
             $table->string('bdate');
             $table->string('email')->unique();
-            $table->string('contnum')->unique();
-            $table->string('idnum')->unique();
-            $table->string('position_id');
+            $table->bigInteger('contnum')->unique();
+            $table->bigInteger('idnum')->unique();
+            $table->unsignedBigInteger('position_id'); // Changing the data type
+            $table->foreign('position_id')->references('id')->on('positions');
             $table->string('office');
             $table->string('password');
-            $table->tinyInteger('status')->default(0); // Assuming 0 means inactive and 1 means active
+            $table->integer('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

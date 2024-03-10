@@ -57,7 +57,7 @@
 								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
 									<th style="width: 30%; color:white;">Name</th>
 
-									<th style="width: 20%; color:white;">Status</th>
+									<th style="width: 20%; color:white;">Affiliation</th>
 									<th style="width: 20%; color:white;">Department</th>
 									<th style="width: 30%; color:white;text-align: center;">Action</th>
 								</tr>
@@ -70,7 +70,7 @@
 										{{ $user->last_name }}
 									</td>
 
-                                    <td>{{ optional($user->Status)->description }}</td>
+                                    <td>{{ optional($user->Affiliation)->description }}</td>
 									<td>
 										{{ $user->dept }}
 									</td>

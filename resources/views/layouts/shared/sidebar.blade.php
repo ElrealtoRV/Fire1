@@ -18,9 +18,6 @@
 					<ul style="display: none;">
 
 						<li><a href="{{ asset('regular-user-list') }}">Regular User</a></li>
-						@if(auth()->user()->hasRole('Head'))
-						<li><a href="{{ asset('employee-list') }}">Employee</a></li>
-						@endif
 						@if(auth()->user()->hasRole('admin'))
 						<li><a href="{{ asset('user') }}">Employee</a></li>
 						@endif
@@ -92,7 +89,7 @@
 							@endif
 							
 							@if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('Head'))
-								<li><a href="/status">Status</a></li>
+								<li><a href="/affiliation">Affiliation</a></li>
 								<li><a href="{{ asset('type') }}">Type</a></li>
 								<li><a href="{{ asset('location') }}">Location</a></li>
 							@endif

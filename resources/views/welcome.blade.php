@@ -55,38 +55,41 @@ nav {
 }
 
 .hero {
-        background-color: #f5f5f5;
-        padding: 4rem 2rem;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-    }
+    background-color: #f5f5f5;
+    padding: 5rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
 
-    .hero img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
 .hero-content {
     max-width: 600px;
 }
 
 .hero-content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
     color: #2e37a4;
+    text-transform: uppercase;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
+    line-height: 1.8;
+    color: #555;
 }
 
 .hero-image img {
-    max-width: 300px;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
 }
-
 .features {
     display: flex;
     justify-content: space-around;
@@ -136,8 +139,8 @@ footer {
         margin-bottom: 2rem;
     }
  .hero-image {
-        width: 100%;
-        height: 500px; /* Set the height of your choice */
+        width: 500px;
+        height: 500px;
         overflow: hidden;
     }
 
@@ -175,7 +178,7 @@ footer {
                 <p>Enhancing fire safety on all NORSU campuses through digital tools and data-driven decision making.</p>
             </div>
             <div class="hero-image">
-            <a class="btn"><img src="{{ asset('assets/img/fire32-removebg-preview.png') }}" alt></a>
+            <a class="btn"><img src="{{ asset('assets/img/fireman1.0.png') }}" alt="Fire man"></a>
             </div>
         </section>
 

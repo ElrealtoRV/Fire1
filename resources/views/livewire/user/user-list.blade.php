@@ -22,8 +22,10 @@
 									<h3>Employee List</h3>
 									<div class="doctor-search-blk">
 										<div class="add-group">
+										@if(auth()->user()->hasRole('admin'))
 											<a wire:click="createUser" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
 											</a>
+										@endif
 										</div>
 									</div>
 								</div>

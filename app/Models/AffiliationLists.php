@@ -5,12 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class StatusLists extends Model
+class AffiliationLists extends Model
 {
     use HasFactory;
     public $guarded = [];
     
-    protected $table = 'status_lists';
+    protected $table = 'affiliation_lists';
     protected $primaryKey = 'id';
     protected $fillable = [ 'description' ];
+
 }

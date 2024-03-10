@@ -50,6 +50,7 @@ class PositionList extends Component
 
     public function render()
     {
+        $filteredPos = Position::where('description', '!=', 'Admin')->get();
         if (empty($this->search)) {
             $positions  = Position::all();
         } else {
@@ -57,7 +58,8 @@ class PositionList extends Component
         }
 
         return view('livewire.position.position-list', [
-            'positions' => $positions
+            'positions' => $positions,
+            'filteredPos' => $filteredPos,
         ]);
     }
 }

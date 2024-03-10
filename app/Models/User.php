@@ -25,10 +25,10 @@ class User extends Authenticatable
         'first_name', 'middle_name', 'last_name','age','bdate','contnum','position_id', 'idnum','office', 'email', 'password','status',
     ];
 
-            public function position()
-        {
-            return $this->belongsTo(Position::class);
-        }
+    public function position()
+    {
+        return $this->belongsTo(Position::class, 'position_id', 'id');
+    }
 
 
     /**

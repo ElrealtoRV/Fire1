@@ -5,13 +5,13 @@ namespace App\Http\Livewire\RegularUser;
 use Livewire\Component;
 use App\Models\RegularList;
 use Spatie\Permission\Models\Role;
-use App\Models\StatusLists;
+use App\Models\AffiliationLists;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 
 class RegularUserForm extends Component
 {
-    public $regularuserId, $first_name, $middle_name, $last_name, $age, $bdate, $contnum, $email, $idnum,$status,$dept, $password, $password_confirmation;
+    public $regularuserId, $first_name, $middle_name, $last_name, $age, $bdate, $contnum, $email, $idnum,$affiliation,$dept, $password, $password_confirmation;
     public $action = '';  //flash
     public $message = '';  //flash
     public $roleCheck = array();
@@ -41,7 +41,7 @@ class RegularUserForm extends Component
         $this->contnum = $regularusers->contnum;
         $this->email = $regularusers->email;
         $this->idnum = $regularusers->idnum;
-        $this->status = $regularusers->status;
+        $this->affiliation = $regularusers->affiliation;
         $this->dept = $regularusers->dept; // Changed from position to position
         $this->password = $regularusers->password; // Changed from position to position
 
@@ -69,7 +69,7 @@ class RegularUserForm extends Component
                 'contnum'     => 'required|digits:11',
                 'email'         => ['required', 'email'],
                 'idnum'     => 'required|digits:9',
-                'status' => 'required',
+                'affiliation' => 'required',
                 'dept'      => 'required',
                 
             ]);
@@ -106,7 +106,7 @@ class RegularUserForm extends Component
                 'contnum'     => 'required|digits:11',
                 'email'         => ['required', 'string', 'email', 'max:255', 'unique:' . RegularList::class],
                 'idnum'     => 'required|digits:9',
-                'status'      => 'required',
+                'affiliation'      => 'required',
                 'dept'      => 'required',
                 'password'      => ['required', 'confirmed','min:6', Rules\Password::defaults()],
             ]);
@@ -119,7 +119,7 @@ class RegularUserForm extends Component
                 'bdate'      => $this->age,
                 'contnum'      => $this->contnum,
                 'idnum'      => $this->idnum,
-                'status'      => $this->status,
+                'affiliation'      => $this->affiliation,
                 'email'        => $this->email,
                 'dept'        => $this->dept,
                 'password'    => Hash::make($this->password)
@@ -142,12 +142,12 @@ class RegularUserForm extends Component
     public function render()
     {
         $roles = Role::all();
-        $statuses = StatusLists::all();
+        $affiliations = AffiliationLists::all();
         $filteredRoles = Role::whereIn('name', ['Student', 'Staff'])->get();
         return view('livewire.regular-user.regular-user-form', [
             'roles' => $roles,
             'filteredRoles' => $filteredRoles,
-            'statuses' => $statuses,
+            'affiliations' => $affiliations,
         ]);
     }
 }

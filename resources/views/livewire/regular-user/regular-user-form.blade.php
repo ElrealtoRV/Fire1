@@ -109,13 +109,13 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group local-forms">
-                                <label>Status</label>
-                                <select class="form-control select" wire:model="status">
+                                <label>Affiliation</label>
+                                <select class="form-control select" wire:model="affiliation">
 
-                                    <option value="" selected>Select a Status</option>
-                                    @foreach ($statuses as $status)
-                                        <option value="{{ $status->id }}">
-                                            {{ $status->description }}
+                                    <option value="" selected>Select an Affiliation</option>
+                                    @foreach ($affiliations as $affiliation)
+                                        <option value="{{ $affiliation->id }}">
+                                            {{ $affiliation->description }}
                                         </option>
                                     @endforeach
                                 </select>

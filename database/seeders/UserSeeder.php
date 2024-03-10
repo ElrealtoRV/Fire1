@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Position;
 
 class UserSeeder extends Seeder
 {
@@ -13,6 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+        $adminPosition = Position::create(['description' => 'Admin']);
+
         User::create([
             'first_name' => 'Ronver',
             'middle_name' => 'Alburo',
@@ -21,13 +24,14 @@ class UserSeeder extends Seeder
             'bdate' => 'june 26, 1999',
             'email' => 'admin@gmail.com',
             'contnum' => '09269325483',
-            'position_id' => 'admin',
+            'position_id' => $adminPosition->id, 
             'idnum' => '201901160',
             'office' => 'CSIT Office',
             'password' => bcrypt('admin123')
         ])->assignRole('admin');
 
           // Create staff user
+          $headPosition = Position::create(['description' => 'Head']);
           User::create([
             'first_name' => 'Jane',
             'middle_name' => 'ehhh',
@@ -36,11 +40,11 @@ class UserSeeder extends Seeder
             'bdate' => 'june 26, 1998',
             'email' => 'head@gmail.com',
             'contnum' => '09269325482',
-            'position_id' => 'head',
+            'position_id' =>  $headPosition->id, 
             'idnum' => '201901161',
             'office' => 'BGO',
             'password' => bcrypt('staff123')
-        ])->assignRole('head');
+        ])->assignRole('Head');
 
 
         // User::create([

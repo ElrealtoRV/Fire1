@@ -5,7 +5,7 @@
 				<ul class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
 					<li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-					<li class="breadcrumb-item active">Status List</li>
+					<li class="breadcrumb-item active">Affiliation List</li>
 				</ul>
 			</div>
 		</div>
@@ -23,7 +23,7 @@
 									<h3>Status List</h3>
 									<div class="doctor-search-blk">
 										<div class="add-group">
-											<a wire:click="createStatus" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
+											<a wire:click="createAffiliation" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
 											</a>
 										</div>
 									</div>
@@ -44,24 +44,24 @@
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
 								<tr>
-									<td>Status</td>
+									<td>Affiliation</td>
 									<th style="width: 30%; text-align: center;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
-								@foreach ($statuses as $status)
+								@foreach ($affiliations as $affiliation)
 									<tr>
 										<td>
-											{{ $status->description }}
+											{{ $affiliation->description }}
 										</td>
 
 										<td class="text-center">
 											<div class="btn-group" role="group">
 												<button type="button" class="btn btn-primary btn-sm mx-1"
-													wire:click="editStatus({{ $status->id }})" title="Edit">
+													wire:click="editAffiliation({{ $affiliation->id }})" title="Edit">
 													<i class='fa fa-pen-to-square'></i>
 												</button>
-												<a class="btn btn-danger btn-sm mx-1" wire:click="deleteStatus({{ $status->id }})" title="Delete">
+												<a class="btn btn-danger btn-sm mx-1" wire:click="deleteAffiliation({{ $affiliation->id }})" title="Delete">
 													<i class="fa fa-trash"></i>
 												</a>
 											</div>
@@ -79,12 +79,12 @@
 </div>
 {{-- Modal --}}
 
-<div wire.ignore.self class="modal fade" id="StatusModal" tabindex="-1" role="dialog"
-	aria-labelledby="StatusModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+<div wire.ignore.self class="modal fade" id="AffiliationModal" tabindex="-1" role="dialog"
+	aria-labelledby="AffiliationModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 	<div class="modal-dialog modal-dialog-centered">
-		<livewire:status.status-form />
+		<livewire:affiliation.affiliation-form />
 	</div>
 </div>
 @section('custom_script')
-	@include('layouts.scripts.status-script')
+	@include('layouts.scripts.affiliation-script')
 @endsection

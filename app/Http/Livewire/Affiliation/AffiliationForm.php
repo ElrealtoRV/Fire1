@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Http\Livewire\Status;
+namespace App\Http\Livewire\Affiliation;
 
 use Livewire\Component;
-use App\Models\StatusLists;
+use App\Models\AffiliationLists;
 
-class StatusForm extends Component
+class AffiliationForm extends Component
 {
-    public $statusId, $description;
+    public $affiliationId, $description;
     public $action = '';  //flash
     public $message = '';  //flash
 
     protected $listeners = [
-        'statusId',
+        'affiliationId',
         'resetInputFields'
     ];
 
@@ -24,11 +24,11 @@ class StatusForm extends Component
     }
 
     //edit
-    public function statusId($statusId)
+    public function affiliationId($affiliationId)
     {
-        $this->statusId = $statusId;
-        $statuses = StatusLists::whereId($statusId)->first();
-        $this->description = $statuses->description;
+        $this->affiliationId = $affiliationId;
+        $affiliations = AffiliationLists::whereId($affiliationId)->first();
+        $this->description = $affiliations->description;
     }
 
     //store
@@ -38,25 +38,25 @@ class StatusForm extends Component
             'description' => 'required',
         ]);
 
-        if ($this->statusId) {
-            StatusLists::whereId($this->statusId)->first()->update($data);
+        if ($this->affiliationId) {
+            AffiliationLists::whereId($this->affiliationId)->first()->update($data);
             $action = 'edit';
             $message = 'Successfully Updated';
         } else {
-           StatusLists::create($data);
+            AffiliationLists::create($data);
             $action = 'store';
             $message = 'Successfully Created';
         }
 
         $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
-        $this->emit('closeStatusModal');
-        $this->emit('refreshParentStatus');
+        $this->emit('closeAffiliationModal');
+        $this->emit('refreshParentAffiliation');
         $this->emit('refreshTable');
     }
 
     public function render()
     {
-        return view('livewire.status.status-form');
+        return view('livewire.affiliation.affiliation-form');
     }
 }
