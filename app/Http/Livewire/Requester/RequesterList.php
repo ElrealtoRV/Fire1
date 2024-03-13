@@ -80,7 +80,7 @@ class RequesterList extends Component
 
         // $Requester = Requester::with('sex')->get();
 
-        return view('livewire.request.request-list', [
+        return view('livewire.requester.requester-list', [
             'requesters' => $requesters,
             // "Requester" => $Requester
         ]);

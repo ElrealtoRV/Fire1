@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Livewire\Requester\RequesterList;
 use App\Http\Livewire\User\UserList;
 use App\Http\Livewire\ActivityLog\ActivityLog;
 use App\Http\Livewire\RegularUser\RegularUserList;
@@ -50,7 +51,8 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');
     Route::get('activity-log', ActivityLog::class);
-    Route::get('statuses', StatusList::class);
+    Route::get('statuses', StatusList::class);  
+    Route::get('requesters', RequesterList::class);  
 });
 Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');

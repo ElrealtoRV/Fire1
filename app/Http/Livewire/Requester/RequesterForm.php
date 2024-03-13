@@ -11,12 +11,12 @@ use App\Models\Requester;
 
 class RequesterForm extends Component
 {
-    public $requesterId, $id_number, $first_name, $middle_name, $last_name, $contact_number, /*$sex_id, $position_id, $college_id, $course_id, $positionId*/ $status_id;
+    public $requesterId, $id_number, $first_name, $middle_name, $last_name, $contact_number/*, $sex_id, $position_id, $college_id, $course_id, $status_id, $positionId*/;
     public $action = '';  //flash
     public $message = '';  //flash
 
     protected $listeners = [
-        '$requesterId',
+        'requesterId',
         'resetInputFields'
     ];
 
@@ -30,7 +30,7 @@ class RequesterForm extends Component
     //edit
     public function requesterId($requesterId)
     {
-        $this->$requesterId = $requesterId;
+        $this->requesterId = $requesterId;
         $requester = Requester::whereId($requesterId)->first();
         $this->id_number = $requester->id_number;
         $this->first_name = $requester->first_name;
@@ -41,15 +41,15 @@ class RequesterForm extends Component
         // $this->position_id = $requester->position_id;
         // $this->college_id = $requester->college_id;
         // $this->course_id = $requester->course_id;
-        $this->status_id = $requester->status_id;
+        // $this->status_id = $requester->status_id;
     }
 
     //store
     public function store()
     {
-
+        
         $rules = [
-            'id_number' => 'required|unique:requesters,id_number,' . $this->$requesterId,
+            'id_number' => 'required|unique:requesters,id_number,' . $this->requesterId,
             'first_name' => 'required',
             'middle_name' => 'nullable',
             'last_name' => 'required',
@@ -58,7 +58,7 @@ class RequesterForm extends Component
             // 'position_id' => 'required',
             // 'college_id' => 'nullable',
             // 'course_id' => 'nullable',
-            'status_id' => 'nullable',
+            // 'status_id' => 'nullable',
         ];
 
         // if($this->position_id == 1){
@@ -68,8 +68,8 @@ class RequesterForm extends Component
 
         $data = $this->validate($rules);
 
-        if ($this->$requesterId) {
-            Requester::whereId($this->$requesterId)->first()->update($data);
+        if ($this->requesterId) {
+            Requester::whereId($this->requesterId)->first()->update($data);
             $action = 'edit';
             $message = 'Successfully Updated';
         } else {
