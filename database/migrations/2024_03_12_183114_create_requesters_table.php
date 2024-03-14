@@ -19,17 +19,17 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('contact_number');
 
-            $table->unsignedBigInteger('sex_id')->nullable();
-            $table->foreign('sex_id')->references('id')->on('sexes');
+            // $table->unsignedBigInteger('sex_id')->nullable();
+            // $table->foreign('sex_id')->references('id')->on('sexes');
 
-            $table->unsignedBigInteger('course_id')->nullable();
-            $table->foreign('course_id')->references('id')->on('courses');
+            // $table->unsignedBigInteger('course_id')->nullable();
+            // $table->foreign('course_id')->references('id')->on('courses');
 
-            $table->unsignedBigInteger('college_id')->nullable();
-            $table->foreign('college_id')->references('id')->on('colleges');
+            // $table->unsignedBigInteger('college_id')->nullable();
+            // $table->foreign('college_id')->references('id')->on('colleges');
 
-            $table->unsignedBigInteger('status_id')->nullable();
-            $table->foreign('status_id')->references('id')->on('statuses');
+            // $table->unsignedBigInteger('status_id')->nullable();
+            // $table->foreign('status_id')->references('id')->on('statuses');
             $table->timestamps();
         });
     }

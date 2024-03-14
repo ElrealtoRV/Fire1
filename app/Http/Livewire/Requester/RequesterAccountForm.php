@@ -46,7 +46,7 @@ class RequesterAccountForm extends Component
             $data = $this->validate([
                 'last_name' => 'required',
                 'first_name' =>  'required',
-                'middle_name' =>  'nullable',
+                'middle_name' =>  'required',
                 // 'username' =>  'required',
                 //'position' => 'required',
                 'email' => ['required', 'email', Rule::unique('users', 'email')],

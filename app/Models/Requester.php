@@ -21,7 +21,7 @@ class Requester extends Model
         // 'college_id',
         // 'course_id',
         'status_id',
-        //'user_id', //for requester user account
+        'user_id', //for requester user account
     ];
 
     // public function sex()

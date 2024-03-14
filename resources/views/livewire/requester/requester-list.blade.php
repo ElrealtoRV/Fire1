@@ -115,11 +115,11 @@
 					<livewire:requester.requester-form />
 				</div>
 			</div>
-			{{--<div wire.ignore.self class="modal fade" id="RequesterAccountModal" tabindex="-1" role="dialog" aria-labelledby="RequesterAccountModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div wire.ignore.self class="modal fade" id="requesterAccountModal" tabindex="-1" role="dialog" aria-labelledby="requesterAccountModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 				<div class="modal-dialog modal-dialog-centered">
-					<livewire:Requester.borrower-account-form />
+					<livewire:requester.requester-account-form />
 				</div>
-			</div>--}}
+			</div>
 			@section('custom_script')
 			@include('layouts.scripts.requester-scripts')
 			@endsection
