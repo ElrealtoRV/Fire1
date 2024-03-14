@@ -5,11 +5,12 @@ namespace App\Http\Livewire\FireExtinguisher;
 use Livewire\Component;
 use App\Models\FireList;
 use App\Models\TypeList;
+use App\Models\Status;
 use App\Models\LocationList;
 
 class FireForm extends Component
 {
-    public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $description, $status,$position_id,$dept, $password;
+    public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $description, $status,$position_id,$dept, $password, $status_id;
     public $action = '';  //flash
     public $message = '';  //flashSSS
     public $fireCheck = array();
@@ -39,19 +40,13 @@ class FireForm extends Component
         $this->expiration_date = $fire->expiration_date;
         $this->description = $fire->description;
         $this->status = $fire->status;
+        $this->status_id = $fire->status_id;
 
-        $this->selectedFire = $fire->getFireNames()->toArray();
+        //$this->selectedFire = $fire->getFireNames()->toArray();
     }
 
     public function store()
     {
-          if (is_object($this->selectedFire)) {
-            $this->selectedFire = json_decode(json_encode($this->selectedFire), true);
-        }
-
-        if (empty($this->fireCheck)) {
-            $this->fireCheck = array_map('strval', $this->selectedFire);
-        }
 
         if ($this->fireId) {
 
@@ -64,21 +59,18 @@ class FireForm extends Component
                 'expiration_date'     => 'required',
                 'description'         => 'nullable',
                 'status'     => 'nullable',
+                'status_id' => 'nullable',
                 
             ]);
             
-
             $fire = FireList::find($this->fireId);
             $fire->update($data);
-
-
-            $fire->syncFire($this->fireCheck);
 
             $action = 'edit';
             $message = 'Successfully Updated';
         } else {
 
-            $this->validate([
+            $data = $this->validate([
                 'type'    => 'required',
                 'firename'   => 'required',
                 'serial_number'     => 'required|digits:7',
@@ -87,21 +79,26 @@ class FireForm extends Component
                 'expiration_date'         => 'required',
                 'description'     => 'nullable',
                 'status'      => 'nullable',
+                'status_id' => 'nullable',
             ]);
 
-            $fire = FireList::create([
-                'type'    => $this->type,
-                'firename'   => $this->firename,
-                'serial_number'      => $this->serial_number,
-                'location'      => $this->location,
-                'installation_date'      => $this->installation_date,
-                'expiration_date'      => $this->expiration_date,
-                'description'      => $this->description,
-                'status'      => $this->status,
-            ]);
+            $data['status_id'] = 1;
+            $data['status'] = 'markGay';
+
+            // $fire = FireList::create([
+            //     'type'    => $this->type,
+            //     'firename'   => $this->firename,
+            //     'serial_number'      => $this->serial_number,
+            //     'location'      => $this->location,
+            //     'installation_date'      => $this->installation_date,
+            //     'expiration_date'      => $this->expiration_date,
+            //     'description'      => $this->description,
+            //     'status_id '      => $this->status_id,
+            //     'status'      => 'markGay',
+            // ]);
             
        
-
+            $fire = FireList::create($data);
 
             $action = 'store';
             $message = 'Successfully Created';
@@ -129,3 +126,4 @@ class FireForm extends Component
         ]);
     }
 }
+

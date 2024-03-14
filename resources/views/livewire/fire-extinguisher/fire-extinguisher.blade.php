@@ -1,4 +1,3 @@
-
 <div class="content">
 	<div class="page-header">
 		<div class="row">
@@ -68,16 +67,30 @@
 							<tbody>
 								@foreach ($fire as $fires)
 								<tr>
-                                <td>{{  $fires->fireex->description  }}</td>
-                                <td>{{ $fires->firename }}</td>
-                                <td>{{  $fires->serial_number }}</td>
-                                <td>{{ optional($fires->FireLocation)->description }}</td>
-                                <td>{{  $fires->installation_date }}</td>
-                                <td>{{  $fires->expiration_date }}</td>
-								<td>{{  $fires->description }}</td>
-                                <td>{{  $fires->status }}</td>
-										
-									
+									<td>{{ $fires->fireex->description  }}</td>
+									<td>{{ $fires->firename }}</td>
+									<td>{{ $fires->serial_number }}</td>
+									<td>{{ optional($fires->FireLocation)->description }}</td>
+									<td>{{ $fires->installation_date }}</td>
+									<td>{{ $fires->expiration_date }}</td>
+									<td>{{ $fires->description }}</td>
+									{{--<td>{{ $fires->status1->name ?? '' }}</td>--}}
+									<td>
+										@php
+										// Set timezone to Philippine time
+										$now = Carbon\Carbon::now('Asia/Manila');
+										// Check if expiration_date is today in Philippine time
+										$expiration_date_ph = Carbon\Carbon::parse($fires->expiration_date, 'UTC')->setTimezone('Asia/Manila');
+										if ($now->toDateString() === $expiration_date_ph->toDateString()) {
+										$fires->status_id = 2; // Update status_id to 2
+										$fires->save(); // Save the changes to the database
+										}
+										@endphp
+
+										{{ $fires->status1->name ?? '' }}
+									</td>
+
+
 									<td class="text-center">
 										<div class="btn-group" role="group">
 											<button type="button" class="btn btn-primary btn-sm mx-1" wire:click="editFire({{ $fires->id }})" title="Edit">
@@ -88,23 +101,23 @@
 												<i class="fa fa-trash"></i>
 											</a>
 										</div>
-																				</div>
-									</td>
-								</tr>
-								@endforeach
-							</tbody>
-						</table>
 					</div>
+					</td>
+					</tr>
+					@endforeach
+					</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		{{-- Modal --}}
-		<div wire.ignore.self class="modal fade" id="FireModal" tabindex="-1" role="dialog" aria-labelledby="FireModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-			<div class="modal-dialog modal-dialog-centered modal-lg">
-				<livewire:fire-extinguisher.fire-form />
-			</div>
+	{{-- Modal --}}
+	<div wire.ignore.self class="modal fade" id="FireModal" tabindex="-1" role="dialog" aria-labelledby="FireModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+		<div class="modal-dialog modal-dialog-centered modal-lg">
+			<livewire:fire-extinguisher.fire-form />
 		</div>
-		@section('custom_script')
-		@include('layouts.scripts.fire-scripts')
-		@endsection
+	</div>
+	@section('custom_script')
+	@include('layouts.scripts.fire-scripts')
+	@endsection

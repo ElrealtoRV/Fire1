@@ -15,7 +15,8 @@ class FireExtinguisher extends Component
     public $message = '';  //flash
 
     protected $listeners = [
-        'refreshFireExtinguisher' => '$refresh',
+        //'refreshFireExtinguisher' => '$refresh',
+        'refreshParentFire' => '$refresh',
         'deleteFire',
         'editFire',
         'deleteConfirmFire'

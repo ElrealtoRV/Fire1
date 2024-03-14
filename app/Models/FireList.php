@@ -10,7 +10,7 @@ class FireList extends Model
     protected $table = 'fire_lists';
     use HasFactory;
     protected $fillable = [
-        'type', 'firename', 'serial_number','location','installation_date','expiration_date', 'description','status',
+        'type', 'firename', 'serial_number','location','installation_date','expiration_date', 'description','status', 'status_id',
     ];
 
     public function fireex()
@@ -21,5 +21,10 @@ class FireList extends Model
     {
         return $this->belongsTo(LocationList::class, 'location', 'id');
         
+    }
+
+    public function status1()
+    {
+        return $this->belongsTo(Status::class, 'status_id', 'id');
     }
 }
