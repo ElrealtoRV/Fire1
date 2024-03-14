@@ -19,7 +19,7 @@
 
 						<li><a href="{{ asset('regular-user-list') }}">Regular User</a></li>
 						@if(auth()->user()->hasRole('admin'))
-						<li><a href="{{ asset('user') }}">Employee</a></li>
+						<li><a href="{{ asset('user') }}">User</a></li>
 						@endif
 					</ul>	
 				</li>

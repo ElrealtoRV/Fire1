@@ -2,13 +2,12 @@
 
 namespace App\Models;
 
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Illuminate\Support\Carbon;
 use Spatie\Permission\Traits\HasRoles;
-
 
 class User extends Authenticatable
 {
@@ -19,10 +18,8 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $table = 'users';
     protected $fillable = [
-
-        'first_name', 'middle_name', 'last_name','age','bdate','contnum','position_id', 'idnum','office', 'email', 'password','status',
+        'image', 'first_name', 'middle_name', 'last_name', 'position_id', 'email', 'password'
     ];
 
     public function position()
@@ -30,6 +27,10 @@ class User extends Authenticatable
         return $this->belongsTo(Position::class, 'position_id', 'id');
     }
 
+    // public function honorific()
+    // {
+    //     return $this->belongsTo(Honorific::class, 'honorific_id', 'id');
+    // }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -51,5 +52,3 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 }
-
-

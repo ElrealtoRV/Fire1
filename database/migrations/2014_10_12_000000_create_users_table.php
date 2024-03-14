@@ -14,18 +14,13 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('first_name');
-            $table->string('middle_name');
+            $table->string('middle_name')->nullable();
             $table->string('last_name');
-            $table->integer('age'); // Corrected data type
-            $table->string('bdate');
-            $table->string('email')->unique();
-            $table->bigInteger('contnum')->unique();
-            $table->bigInteger('idnum')->unique();
-            $table->unsignedBigInteger('position_id'); // Changing the data type
+            $table->unsignedBigInteger('position_id')->nullable();
             $table->foreign('position_id')->references('id')->on('positions');
-            $table->string('office');
+            $table->string('email')->unique();
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('status')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

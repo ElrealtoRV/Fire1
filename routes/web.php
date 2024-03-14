@@ -46,7 +46,7 @@ Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('user', UserList::class);
+    Route::get('users', UserList::class);
     Route::get('role', RoleList::class);
     Route::get('permission', PermissionList::class);
     Route::view('setting', 'setting')->name('setting');

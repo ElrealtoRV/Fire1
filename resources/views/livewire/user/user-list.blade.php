@@ -5,7 +5,7 @@
 				<ul class="breadcrumb">
 					<li class="breadcrumb-item"><a href="/">Dashboard</a></li>
 					<li class="breadcrumb-item"><i class="feather-chevron-right"></i></li>
-					<li class="breadcrumb-item active">Employee List</li>
+					<li class="breadcrumb-item active">User List</li>
 				</ul>
 			</div>
 		</div>
@@ -19,13 +19,11 @@
 						<div class="row align-items-center">
 							<div class="col">
 								<div class="doctor-table-blk">
-									<h3>Employee List</h3>
+									<h3>User List</h3>
 									<div class="doctor-search-blk">
 										<div class="add-group">
-										@if(auth()->user()->hasRole('admin'))
 											<a wire:click="createUser" class="btn btn-primary ms-2"><img src="{{ asset('assets/img/icons/plus.svg') }}" alt>
 											</a>
-										@endif
 										</div>
 									</div>
 								</div>
@@ -33,7 +31,7 @@
 							<div class="col-auto text-end float-end ms-auto download-grp">
 								<div class="top-nav-search table-search-blk">
 									<form>
-										<input type="text" class="form-control" placeholder="Search here" wire:model.debounce.500ms="search" name="search">
+										<input type="text" class="form-control" placeholder="Search here" wire:model.debounce.500ms="search">
 										<a class="btn"><img src="{{ asset('assets/img/icons/search-normal.svg') }}" alt></a>
 									</form>
 								</div>
@@ -54,11 +52,13 @@
 					<div class="table-responsive">
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
-								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
-									<th style="width: 30%;color:white;">Name</th>
-									<th style="width: 25%;color:white;">Email</th>
-									<th style="color:white;">Position</th>
-									<th style="width: 15%;color:white;">Action</th>
+								<tr>
+									<th style="width: 30%">Name</th>
+
+									<th style="width: 20%">Position</th>
+									<th style="width: 25%">Email</th>
+									<th>Role</th>
+									<th style="width: 15%">Action</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -69,6 +69,9 @@
 										{{ $user->last_name }}
 									</td>
 
+									<td>
+										{{ $user->position->description ?? '' }}
+									</td>
 									<td>
 										{{ $user->email }}
 									</td>
@@ -84,10 +87,10 @@
 											</button>
 
 
-										 <a class="btn btn-danger btn-sm mx-1"
+											{{-- <a class="btn btn-danger btn-sm mx-1"
                                                     wire:click="deleteUser({{ $user->id }})" title="Delete">
 											<i class="fa fa-trash"></i>
-											</a> 
+											</a> --}}
 										</div>
 									</td>
 								</tr>
