@@ -30,6 +30,14 @@ class UserList extends Component
         $this->emit('openUserModal');
     }
 
+    public function createUserInfo($userId)
+    {
+        $this->userId = $userId;
+        $this->emit('resetInputFields');
+        $this->emit('userId', $this->userId);
+        $this->emit('openUserInfoModal');
+    }
+
     public function editUser($userId)
     {
         $this->userId = $userId;

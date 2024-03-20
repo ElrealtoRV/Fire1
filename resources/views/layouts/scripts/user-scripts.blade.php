@@ -14,10 +14,10 @@
 		$('#userModal').modal('show');
 	});
 
-	window.livewire.on('closeUserInquiryModal', () => {
-		$('#userInquiryModal').modal('hide');
+	window.livewire.on('closeUserInfoModal', () => {
+		$('#userInfoModal').modal('hide');
 	});
-	window.livewire.on('openUserInquiryModal', () => {
-		$('#userInquiryModal').modal('show');
+	window.livewire.on('openUserInfoModal', () => {
+		$('#userInfoModal').modal('show');
 	});
 </script>

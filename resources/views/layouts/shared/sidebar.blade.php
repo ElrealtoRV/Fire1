@@ -17,10 +17,12 @@
 
 					<ul style="display: none;">
 
-						<li><a href="{{ asset('regular-user-list') }}">Regular User</a></li>
+						<!-- <li><a href="{{ asset('regular-user-list') }}">Regular User</a></li> -->
 						@if(auth()->user()->hasRole('admin'))
-						<li><a href="{{ asset('user') }}">User</a></li>
+						<li><a href="{{ asset('users') }}">User</a></li>
 						@endif
+						<li><a href="{{ asset('requesters') }}">Requesters</a></li>
+						<li><a href="{{ asset('employees') }}">Employees</a></li>
 					</ul>	
 				</li>
 				

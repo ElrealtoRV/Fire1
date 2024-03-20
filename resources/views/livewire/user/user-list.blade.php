@@ -82,6 +82,11 @@
 									</td>
 									<td class="text-center">
 										<div class="btn-group" role="group">
+										@if ($user->employeeInfo == null)
+										<button type="button" class="btn btn-primary btn-sm mx-1" wire:click="createUserInfo({{ $user->id }})" title="Info">
+												Info
+											</button>
+											@endif
 											<button type="button" class="btn btn-primary btn-sm mx-1" wire:click="editUser({{ $user->id }})" title="Edit">
 												<i class='fa fa-pen-to-square'></i>
 											</button>
@@ -105,6 +110,11 @@
 		<div wire.ignore.self class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="userModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
 			<div class="modal-dialog modal-dialog-centered modal-lg">
 				<livewire:user.user-form />
+			</div>
+		</div>
+		<div wire.ignore.self class="modal fade" id="userInfoModal" tabindex="-1" role="dialog" aria-labelledby="userInfoModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<livewire:user.user-info-form />
 			</div>
 		</div>
 		@section('custom_script')
