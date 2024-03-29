@@ -1,0 +1,356 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+.head-title {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+.box-info li i.fa-fire-extinguisher {
+    color: orange;
+}
+.box-info li i.bxs-group {
+    color: green;
+}
+.box-info li i.fa-briefcase {
+    color: blue;
+}
+.box-info li i.fas-fire-extinguisher-red {
+    color: red;
+}
+h1 {
+    color: #3498db;
+    margin: 0;
+}
+.box-info {
+    width: 100%;
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    padding: 20px;
+    margin: 10px;
+    flex-wrap: wrap; /* Add this to allow wrapping on smaller screens */
+}
+.box-info li {
+    text-align: center;
+    width: 250px;
+    min-height: 200px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-right: 50px;
+    margin-bottom: 20px; /* Add this to create spacing between boxes on smaller screens */
+}
+.box-info li:last-child {
+    margin-right: 0;
+}
+.box-info i {
+    font-size: 4em;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+.box-info h3 {
+    margin: 10px;
+    font-size: 24px;
+    color: #333;
+}
+.box-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+.box-info li:hover {
+    transform: scale(1.05);
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .head-title {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: 0;
+    }
+    .box-info li {
+        width: calc(50% - 30px); /* Adjust the width for smaller screens */
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+@media (max-width: 480px) {
+    .box-info li {
+        width: 100%; /* On very small screens, make boxes take full width */
+        margin-right: 0;
+        margin-left: 0;
+    }
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: #fff;
+}
+
+.scrollable-box {
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.fas{
+    margin-left:11px;
+}
+
+button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+/* Userlist dashboard */
+
+/* Userlist dashboard */
+
+.table-data {
+    width: 550px;
+    height: auto;
+    overflow: auto;
+	background-color: #ffffff;
+	padding: 20px !important;
+	margin-left: 55px !important ;
+	margin-top: -20px;  
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.order table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+	
+}
+
+.order th, .order td {
+    border: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+}
+
+.order th {
+    background-color: #3498db; /* Blue header color */
+    color: #fff;
+}
+
+.order .status {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.order .status.active {
+    background-color: #2ecc71; /* Green color for Active status */
+    color: #fff;
+}
+
+.order .status.inactive {
+    background-color: #f39c12; /* Orange color for Inactive status */
+    color: #fff;
+}
+
+/* Additional styling for the search and filter section */
+.user-list {
+    margin-bottom: 20px;
+    
+}
+
+#searchInput {
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-left: 270px;
+    height: 20px;
+    margin-top: 15px;
+}
+
+#filterDropdown {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.status {
+    font-size: 15px;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+}
+
+.status.active {
+    background-color: #2ecc71; /* Green color for Active status */
+    color: #fff;
+}
+
+.status.inactive {
+    background-color: #e74c3c; /* Red color for Inactive status */
+    color: #fff;
+}
+.status.completed {
+	background: var(--blue);
+}
+.status.process {
+	background: var(--yellow);
+}
+.status.pending {
+	background: var(--orange);
+}
+.flex-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.table-data,
+.todo-container {
+    flex-basis: calc(50% - 20px); /* Adjust the width as needed, considering the gap */
+}
+/* Todo List */
+
+.todo-container {
+    max-width: 100%;
+    margin-top: 30px;
+    margin-left: 25px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+    color: #3498db;
+    font-size: 20px;
+}
+
+.todo-list {
+    list-style: none;
+    padding: 0;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #ecf0f1;
+    border-radius: 5px;
+}
+
+.todo-item input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.todo-item .task {
+    flex-grow: 1;
+    font-size: 16px;
+}
+
+.add-task {
+    display: flex;
+    margin-top: 20px;
+  
+}
+
+.add-task input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.add-task button {
+    padding: 8px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.add-task button svg {
+    fill: #fff;
+    margin-right: 5px;
+}
+
+@media screen and (max-width: 768px) {
+    .todo-container {
+        margin-left: 0;
+        padding: 15px;
+    }
+
+    .add-task {
+        flex-direction: column;
+    }
+
+    .add-task input[type="text"] {
+        margin-top: 10px;
+    }
+
+    .todo-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .todo-item input[type="checkbox"] {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+}
