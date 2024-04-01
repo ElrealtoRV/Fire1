@@ -205,43 +205,54 @@
         </div>
     </div>
     <script>
-// Access Livewire component's data
-const fires = @json($fires);
-const userCounts = @json($userCounts);
-const regularusers = @json($regularusers);
+    function generateReport() {
+        // Assuming you have logic here to generate the report
+        // For now, let's just log a message to the console
+        console.log("Report generated");
+        
+        // Now, update the charts based on the generated report
+        updateCharts();
+    }
+    
+    function updateCharts() {
+        // Access Livewire component's data
+        const fires = @json($fires);
+        const userCounts = @json($userCounts);
+        const regularusers = @json($regularusers);
 
-// Update the chart with Livewire data
-updateChart('existingChart', fires, 'Fire Extinguisher');
-updateChart('expiredChart', 0, 'Expired Fire Extinguisher'); // Provide dummy data if needed
-updateChart('employeeChart', userCounts, 'Employee');
-updateChart('userChart', regularusers, 'User');
+        // Update the chart with Livewire data
+        updateChart('existingChart', fires, 'Fire Extinguisher');
+        updateChart('expiredChart', 0, 'Expired Fire Extinguisher'); // Provide dummy data if needed
+        updateChart('employeeChart', userCounts, 'Employee');
+        updateChart('userChart', regularusers, 'User');
+    }
 
-function updateChart(chartId, value, label) {
-    const ctx = document.getElementById(chartId).getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: [label],
-            datasets: [{
-                label: 'Count',
-                data: [value],
-                backgroundColor: ['rgba(52, 152, 219, 0.2)'], // Adjusted color to match the gradient
-                borderColor: ['rgba(52, 152, 219, 1)'], // Adjusted color to match the gradient
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        stepSize: 1
+    function updateChart(chartId, value, label) {
+        const ctx = document.getElementById(chartId).getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: [label],
+                datasets: [{
+                    label: 'Count',
+                    data: [value ],
+                    backgroundColor: ['rgba(52, 152, 219, 0.2)'], // Adjusted color to match the gradient
+                    borderColor: ['rgba(52, 152, 219, 1)'], // Adjusted color to match the gradient
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
                     }
                 }
             }
-        }
-    });
-}
+        });
+    }
 </script>
 </body>
 
