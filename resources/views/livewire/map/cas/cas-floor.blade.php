@@ -151,7 +151,7 @@
             <!-- Modal -->
         </div>
     </div>
-    <!-- <div id="MapFormModal" class="modal">
+<!--     <div id="MapFormModal" class="modal">
       <div id="modalContent"></div>
       <livewire:fire-extinguisher.fire-form />
       <button id="closeModal" onclick="closeModal()">Close</button>

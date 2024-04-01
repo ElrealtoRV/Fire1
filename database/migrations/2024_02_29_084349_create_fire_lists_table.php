@@ -17,8 +17,12 @@ return new class extends Migration
             $table->foreign('type')->references('id')->on('type_lists');
             $table->string('firename');
             $table->string('serial_number');
-            $table->unsignedBigInteger('location'); // Changing the data type
-            $table->foreign('location')->references('id')->on('location_lists');
+            $table->unsignedBigInteger('building');
+            $table->unsignedBigInteger('floor');
+            $table->unsignedBigInteger('room');
+            $table->foreign('building')->references('id')->on('location_lists');
+            $table->foreign('floor')->references('id')->on('location_lists');
+            $table->foreign('room')->references('id')->on('location_lists');
             $table->date('installation_date');
             $table->date('expiration_date')->default(now());
             $table->text('description')->nullable();

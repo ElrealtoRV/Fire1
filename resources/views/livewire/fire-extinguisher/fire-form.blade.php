@@ -58,24 +58,60 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group local-forms">
-                                <label>
-                                    Location
-                                    <span class="login-danger">*</span>
-                                </label>
-                                <select class="form-control select" wire:model="location">
 
-                                    <option value="" selected>Select a Location</option>
-                                    @foreach ($locations as $location)
-                                        <option value="{{ $location->id }}">
-                                            {{ $location->description }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group local-forms">
+                                            <label>
+                                                Building / Department
+                                                <span class="login-danger">*</span>
+                                            </label>
+                                            <select class="form-control select" wire:model="building">
+
+                                                <option value="" selected>Select a Building</option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}">
+                                                        {{ $location->building }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group local-forms">
+                                            <label>
+                                               Floor
+                                                
+                                            </label>
+                                            <select class="form-control select" wire:model="floor">
+
+                                                <option value="" selected>Select a Floor</option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}">
+                                                        {{ $location->floor }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group local-forms">
+                                            <label>
+                                                Room / Office
+                                                <span class="login-danger">*</span>
+                                            </label>
+                                            <select class="form-control select" wire:model="room">
+
+                                                <option value="" selected>Select a Room</option>
+                                                @foreach ($locations as $location)
+                                                    <option value="{{ $location->id }}">
+                                                        {{ $location->room }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div>
                         <div class="row">
                         <div class="col-md-6">
                             <div class="form-group local-forms">

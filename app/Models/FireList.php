@@ -10,18 +10,18 @@ class FireList extends Model
     protected $table = 'fire_lists';
     use HasFactory;
     protected $fillable = [
-        'type', 'firename', 'serial_number','location','installation_date','expiration_date', 'description','status',
+        'type', 'firename', 'serial_number','building','floor','room','installation_date','expiration_date', 'description','status',
     ];
 
     public function fireex()
     {
         return $this->belongsTo(TypeList::class, 'type', 'id');
     }
-    public function FireLocation()
+    public function fireLocation()
     {
-        return $this->belongsTo(LocationList::class, 'location', 'id');
-        
+        return $this->belongsTo(LocationList::class, 'building', 'floor', 'room', 'id');
     }
+    
     public static function getFireNames()
     {
         return self::pluck('firename');

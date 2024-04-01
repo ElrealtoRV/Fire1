@@ -71,7 +71,13 @@
                                 <td>{{  $fires->fireex->description  }}</td>
                                 <td>{{ $fires->firename }}</td>
                                 <td>{{  $fires->serial_number }}</td>
-                                <td>{{ optional($fires->FireLocation)->description }}</td>
+								<td>
+									{{ strval($fires->building) }} /
+									{{ strval($fires->floor) }} /
+									{{ strval($fires->room) }}
+								</td>
+
+
                                 <td>{{  $fires->installation_date }}</td>
                                 <td>{{  $fires->expiration_date }}</td>
 								<td>{{  $fires->description }}</td>

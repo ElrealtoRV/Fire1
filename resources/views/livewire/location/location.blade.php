@@ -44,15 +44,23 @@
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
 								<tr style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;" >
-                                <th style="width: 70%;color:white">Location</th>
-								<th style="width: 30%; text-align: center;color:white;">Action</th>
+                                <th style="width: 25%;color:white">Building</th>
+                                <th style="width: 25%;color:white">Floor</th>
+                                <th style="width: 25%;color:white">Room</th>
+								<th style="width: 25%; text-align: center;color:white;">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach ($locations as $location)
 									<tr>
 										<td>
-											{{ $location->description }}
+										{{ $location->building }} 
+										</td>
+										<td>
+										 {{ $location->floor }} 
+										</td>
+										<td>
+										{{ $location->room }}
 										</td>
 
 										<td class="text-center">

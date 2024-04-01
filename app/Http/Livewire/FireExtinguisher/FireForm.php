@@ -9,7 +9,7 @@ use App\Models\LocationList;
 
 class FireForm extends Component
 {
-    public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $description, $status;
+    public $fireId, $type, $firename, $serial_number, $building,$floor,$room, $installation_date, $expiration_date, $description, $status;
     public $action = '';  //flash
     public $message = '';  //flashSSS
     public $fireCheck = array();
@@ -34,7 +34,9 @@ class FireForm extends Component
         $this->type = $fire->type;
         $this->firename = $fire->firename;
         $this->serial_number = $fire->serial_number;
-        $this->location = $fire->location;
+        $this->building = $fire->building;
+        $this->floor = $fire->floor;
+        $this->room = $fire->room;
         $this->installation_date = $fire->installation_date;
         $this->expiration_date = $fire->expiration_date;
         $this->description = $fire->description;
@@ -59,7 +61,9 @@ class FireForm extends Component
                 'type'    => 'required',
                 'firename'   => 'required',
                 'serial_number'     => 'required|digits:7',
-                'location'     => 'required',
+                'building'     => 'required',
+                'floor'     => 'nullable',
+                'room'     => 'required',
                 'installation_date'     => 'required',
                 'expiration_date'     => 'required',
                 'description'         => 'nullable',
@@ -82,7 +86,9 @@ class FireForm extends Component
                 'type'    => 'required',
                 'firename'   => 'required',
                 'serial_number'     => 'required|digits:7',
-                'location'     => 'required',
+                'building'     => 'required',
+                'floor'     => 'nullable',
+                'room'     => 'required',
                 'installation_date'     => 'required',
                 'expiration_date'         => 'required',
                 'description'     => 'nullable',
@@ -93,7 +99,9 @@ class FireForm extends Component
                 'type'    => $this->type,
                 'firename'   => $this->firename,
                 'serial_number'      => $this->serial_number,
-                'location'      => $this->location,
+                'building'      => $this->building,
+                'floor'      => $this->floor,
+                'room'      => $this->room,
                 'installation_date'      => $this->installation_date,
                 'expiration_date'      => $this->expiration_date,
                 'description'      => $this->description,
@@ -122,7 +130,9 @@ class FireForm extends Component
         $this->type = $fire->type;
         $this->firename = $fire->firename;
         $this->serial_number = $fire->serial_number;
-        $this->location = $fire->location;
+        $this->building = $fire->building;
+        $this->floor = $fire->floor;
+        $this->room = $fire->room;
         $this->installation_date = $fire->installation_date;
         $this->expiration_date = $fire->expiration_date;
         $this->description = $fire->description;

@@ -53,7 +53,7 @@ class RequestList extends Component
     {
         $requests = RequestLists::with('fireex')->get();
         $types = TypeList::query();
-        $locations = RequestLists::with('FireLocation')->get();
+        $locations = RequestLists::with('fireLocation')->get();
         $addrequests = RequestLists::with('AddRequest')->get();
 
         

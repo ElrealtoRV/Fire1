@@ -15,13 +15,31 @@
     <form wire:submit.prevent="store" enctype="multipart/form-data">
         <div class="modal-body">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-4">
                     <div class="form-group local-forms">
                         <label>
-                            Location
+                            Building
                             <span class="login-danger">*</span>
                         </label>
-                        <input class="form-control" type="text" wire:model="description" placeholder />
+                        <input class="form-control" type="text" wire:model="building" placeholder />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group local-forms">
+                        <label>
+                            Floor
+                            <span class="login-danger">*</span>
+                        </label>
+                        <input class="form-control" type="text" wire:model="floor" placeholder />
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group local-forms">
+                        <label>
+                            Room
+                            <span class="login-danger">*</span>
+                        </label>
+                        <input class="form-control" type="text" wire:model="room" placeholder />
                     </div>
                 </div>
                 <div>

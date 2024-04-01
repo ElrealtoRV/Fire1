@@ -8,7 +8,7 @@ use App\Models\LocationList;
 class LocationForm extends Component
 {
 
-    public $locationId, $description;
+    public $locationId, $building,$floor,$room;
     public $action = '';  //flash
     public $message = '';  //flash
 
@@ -29,15 +29,20 @@ class LocationForm extends Component
     {
         $this->locationId = $locationId;
         $location = LocationList::whereId($locationId)->first();
-        $this->description = $location->description;
+        $this->building = $location->building;
+        $this->floor = $location->floor;
+        $this->room = $location->room;
     }
 
     //store
     public function store()
     {
         $data = $this->validate([
-            'description' => 'required',
+            'building' => 'nullable|unique:location_Lists,building', // Table: buildings, Column: name
+            'floor' => 'nullable|unique:location_Lists,floor', // Table: floors, Column: number
+            'room' => 'nullable|unique:location_Lists,room', // Table: rooms, Column: designation
         ]);
+    
 
         if ($this->locationId) {
             LocationList::whereId($this->locationId)->first()->update($data);

@@ -8,18 +8,19 @@ use Illuminate\Database\Eloquent\Model;
 class LocationList extends Model
 {
     use HasFactory;
-    public $guarded = [];
-    
+
+    protected $guarded = [];
     protected $table = 'location_lists';
     protected $primaryKey = 'id';
-    protected $fillable = [ 'description' ];
+    protected $fillable = ['building', 'floor', 'room'];
 
-    public function Location()
+    public function fireLocation()
     {
-        return $this->hasMany(FireList::class, 'location', 'id');
+        return $this->hasMany(FireList::class, 'building', 'floor', 'room', 'id');
     }
-    public function RequestLocation()
+
+    public function requestLocation()
     {
-        return $this->hasMany(RequestLists::class, 'location', 'id');
+        return $this->hasMany(RequestLists::class, 'location_id');
     }
 }

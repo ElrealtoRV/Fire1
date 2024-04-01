@@ -56,28 +56,36 @@ class FireExtinguisher extends Component
     }
 
     public function render()
-    {
-        $fire = FireList::with('fireex')->get();
-        $types = TypeList::query();
-        $locations = FireList::with('FireLocation')->get();
-        
+{
+    $query = FireList::query();
 
-        
+    // Eager load relationships
+    $query->with('fireex', 'fireLocation');
 
-        if (!empty($this->search)) {
-            $fire->where(function ($query) {
-                $query->where('type', 'LIKE', '%' . $this->search . '%')
-                    ->orWhere('firename', 'LIKE', '%' . $this->search . '%') 
-                    ->orWhere('serialNum', 'LIKE', '%' . $this->search . '%')
-                    ->orWhereHas('status', function ($positionQuery) {
-                        $positionQuery->where('description', 'LIKE', '%' . $this->search . '%');
-                    });
+    // Apply search filter
+    if (!empty($this->search)) {
+        $query->where(function ($subQuery) {
+            $subQuery->where('type', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('firename', 'LIKE', '%' . $this->search . '%')
+                ->orWhere('serialNum', 'LIKE', '%' . $this->search . '%')
+                ->orWhereHas('type', function ($typeQuery) {
+                    $typeQuery->where('description', 'LIKE', '%' . $this->search . '%');
                 });
-            }
-            return view('livewire.fire-extinguisher.fire-extinguisher', [
-                'fire' => $fire,
-                'types' => $types,
-                'locations' => $locations,
-            ]); 
+        });
     }
+
+    // Fetch results
+    $fire = $query->get();
+
+    // Fetch types if needed
+    $types = TypeList::all();
+    $locations = LocationList::all();
+
+    return view('livewire.fire-extinguisher.fire-extinguisher', [
+        'fire' => $fire,
+        'types' => $types,
+        'locations' => $locations,
+    ]);
+}
+
 }
