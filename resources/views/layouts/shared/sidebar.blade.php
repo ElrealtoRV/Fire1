@@ -73,7 +73,8 @@
 
 					<ul style="display: none;">	
 
-						<li><a href="/report">Report 1</a></li>
+						<li><a href="/report">Activity Log</a></li>
+						<li><a href="/report">Analytical</a></li>
 					</ul>
 				</li>
 				

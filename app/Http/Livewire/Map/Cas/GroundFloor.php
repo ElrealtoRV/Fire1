@@ -32,9 +32,12 @@ class GroundFloor extends Component
     }
     public function createFire()
     {
-        $this->emit('resetInputFields');
-        $this->emit('openFireModal');
+        
+        $this->emit('resetInputFields'); // Emitting an event to reset input fields, assuming this is part of a Livewire component or similar framework
+        $this->emit('openFireModal'); // Emitting an event to open a modal, assuming this is part of a Livewire component or similar framework
+         
     }
+    
 
     public function editFire($fireId)
     {

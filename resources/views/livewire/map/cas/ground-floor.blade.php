@@ -108,6 +108,10 @@
       color: green;
       margin-left: -13px;
   }
+  .plus-icon{
+      color: black;
+      margin-left: -35px;
+  }
   .circle-icon{
     margin-left: -70px;
   }
@@ -133,12 +137,15 @@
     <div id="ground-floor" class="floor-content">
   
         <img src="{{ asset('assets/img/GroundFloor.png') }}" alt="GroundFloor" width="1000px" height="300px">
-        <span class="CasDean" wire:click="createFire"><i class="fas fa-eye eye-icon"></i></span>
+        <span class="CasDean" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CasDean" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
+        <span class="CasDean" wire:click="createFire"><i class="fas fa-plus plus-icon"></i></span>
         <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
+        <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-plus plus-icon"></i></span>
         <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
+        <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-plus plus-icon"></i></span>
         <span class="CAS104" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS104" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
         <span class="MCL" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>

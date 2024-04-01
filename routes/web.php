@@ -26,6 +26,7 @@ use App\Http\Livewire\Map\Cas\CasFloor;
 use App\Http\Livewire\Map\Cas\GroundFloor;
 use App\Http\Livewire\Department\DepartmentList;
 use App\Http\Livewire\Task\TaskManager;
+use App\Http\Livewire\Report\Analytical;
 
 
 /*
@@ -71,6 +72,7 @@ Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('map', BuildingList::class);
     Route::get('/cas-floor', CasFloor::class)->name('cas.floor');
     Route::get('/ground-floor', GroundFloor::class)->name('ground.floor');
+    Route::get('/report', Analytical::class)->name('ground.floor');
 
 
 

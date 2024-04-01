@@ -151,11 +151,11 @@
             <!-- Modal -->
         </div>
     </div>
-<!--     <div id="MapFormModal" class="modal">
+    <div id="MapFormModal" class="modal">
       <div id="modalContent"></div>
       <livewire:fire-extinguisher.fire-form />
       <button id="closeModal" onclick="closeModal()">Close</button>
-    </div> -->
+    </div>
 </div>
 
 <script>
@@ -169,14 +169,14 @@
         window.livewire.emit('floorSelected', floorId); // Emit Livewire event
     }
 
-/*     function openModal(content) {
+    function openModal(content) {
         document.getElementById('modalContent').innerText = content;
         document.getElementById('MapFormModal').style.display = 'flex';
     }
 
     function closeModal() {
         document.getElementById('MapFormModal').style.display = 'none';
-    } */
+    }
 
     // Function to save the current floor ID to sessionStorage
     function saveCurrentFloor(floorId) {
