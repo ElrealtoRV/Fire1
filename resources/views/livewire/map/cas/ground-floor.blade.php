@@ -108,17 +108,33 @@
       color: green;
       margin-left: -13px;
   }
+  .circle-icon{
+    margin-left: -70px;
+  }
 
   .eye-icon {
       color: gray;
       padding-right: 25px;
   }
+  .active {
+    background-color: green; /* Active state background color */
+}
+
+.inactive {
+    background-color: orange; /* Inactive state background color */
+}
+
+.refill {
+    background-color: blue; /* Refill state background color */
+}
 </style>
+<livewire:flash-message.flash-message />
 <div class="scroll-container">
     <div id="ground-floor" class="floor-content">
+  
         <img src="{{ asset('assets/img/GroundFloor.png') }}" alt="GroundFloor" width="1000px" height="300px">
-        <span class="CasDean" onclick="openModal('')"><i class="fas fa-eye eye-icon"></i></span>
-        <span class="CasDean" onclick="openModal('')"><i class="fas fa-edit edit-icon"></i></span>
+        <span class="CasDean" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
+        <span class="CasDean" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
         <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
         <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
@@ -147,9 +163,19 @@
         <span class="CAS111" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
         <span class="CAS112" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS112" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
+
         <h1>GROUND FLOOR</h1>
     </div>
 </div>
 
 
 
+{{-- Modal --}}
+		<div wire.ignore.self class="modal fade" id="FireModal" tabindex="-1" role="dialog" aria-labelledby="FireModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+			<div class="modal-dialog modal-dialog-centered modal-lg">
+				<livewire:fire-extinguisher.fire-form />
+			</div>
+		</div>
+		@section('custom_script')
+		@include('layouts.scripts.fire-scripts')
+		@endsection

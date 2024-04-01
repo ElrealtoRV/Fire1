@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire\FireExtinguisher;
+namespace App\Http\Livewire\Map;
 
 use Livewire\Component;
 use App\Models\FireList;
 use App\Models\TypeList;
 use App\Models\LocationList;
 
-class FireForm extends Component
+class Form extends Component
 {
     public $fireId, $type, $firename, $serial_number, $location, $installation_date, $expiration_date, $description, $status;
     public $action = '';  //flash
@@ -109,27 +109,13 @@ class FireForm extends Component
         
         $this->emit('flashAction', $action, $message);
         $this->resetInputFields();
-        $this->emit('closeFireModal');
+        $this->emit('closeMapFormModal');
         $this->emit('refreshParentFire');
-        $this->emit('refreshParentGroundFLoor');
         $this->emit('refreshTable');
 
     }
-    public function openViewModal($fireId)
-    {
-        $fire = FireList::findOrFail($fireId);
-        $this->fireId = $fireId;
-        $this->type = $fire->type;
-        $this->firename = $fire->firename;
-        $this->serial_number = $fire->serial_number;
-        $this->location = $fire->location;
-        $this->installation_date = $fire->installation_date;
-        $this->expiration_date = $fire->expiration_date;
-        $this->description = $fire->description;
-        $this->status = $fire->status;
-
-        $this->emit('openViewModal');
-    }
+   
+    
 
     public function render()
     {
@@ -137,7 +123,7 @@ class FireForm extends Component
         $types =TypeList::all();
         $locations =LocationList::all();
 
-        return view('livewire.fire-extinguisher.fire-form', [
+        return view('livewire.map.form', [
             'fire' => $fire,
             'types' => $types,
             'locations' => $locations,

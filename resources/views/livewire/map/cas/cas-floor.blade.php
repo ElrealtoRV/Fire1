@@ -67,7 +67,25 @@
         opacity: 1;
     }
 
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 20;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
 
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
 @media (max-width: 768px) {
   .modal-content {
     width: 200px;
@@ -119,68 +137,78 @@
 </style>
 <div class="container">
     <div class="card">
-      <div class="horizontal-scroll-container">
-        
-      <div class="floor-selection">
-      
-        <a href="#" class="floor-button" value="ground-floor"data-floor="Ground" onclick="showFloor('ground-floor')">Ground Floor</a>
-        <a href="#" class="floor-button"  value="second-floor" data-floor="2nd" onclick="showFloor('second-floor')">2nd Floor</a>
-        <a href="#" class="floor-button" value="third-floor"data-floor="3rd" onclick="showFloor('third-floor')">3rd Floor</a>
-        <a href="#" class="floor-button" value="fourth-floor" data-floor="4th" onclick="showFloor('fourth-floor')">4th Floor</a>
-       
-      </div>
-    @livewire('map.cas.ground-floor')
+        <div class="horizontal-scroll-container">
+            <div class="floor-selection">
+                <a href="#" class="floor-button" value="ground-floor" data-floor="Ground" onclick="showFloor(event, 'ground-floor')">Ground Floor</a>
+                <a href="#" class="floor-button" value="second-floor" data-floor="2nd" onclick="showFloor(event, 'second-floor')">2nd Floor</a>
+                <a href="#" class="floor-button" value="third-floor" data-floor="3rd" onclick="showFloor(event, 'third-floor')">3rd Floor</a>
+                <a href="#" class="floor-button" value="fourth-floor" data-floor="4th" onclick="showFloor(event, 'fourth-floor')">4th Floor</a>
+            </div>
+            @livewire('map.cas.ground-floor')
+            @livewire('map.cas.second-floor')
+            @livewire('map.cas.third-floor')
+            @livewire('map.cas.fourth-floor')
+            <!-- Modal -->
+        </div>
+    </div>
+    <!-- <div id="MapFormModal" class="modal">
+      <div id="modalContent"></div>
+      <livewire:fire-extinguisher.fire-form />
+      <button id="closeModal" onclick="closeModal()">Close</button>
+    </div> -->
+</div>
 
-    <!-- Modal -->
-</div>
-</div>
-</div>
-</div>
-
-<div id="myModal" class="modal">
-
-    @livewire('fire-extinguisher.fire-form')
-    
-    <p id="modalContent"></p>
-</div>
-    <script>
-  function showFloor(floorId) {
-    const floorContents = document.getElementsByClassName('floor-content');
-    for (let i = 0; i < floorContents.length; i++) {
-      floorContents[i].style.display = 'none';
+<script>
+    function showFloor(event, floorId) {
+        event.preventDefault(); // Prevent default anchor tag behavior
+        const floorContents = document.getElementsByClassName('floor-content');
+        for (let i = 0; i < floorContents.length; i++) {
+            floorContents[i].style.display = 'none';
+        }
+        document.getElementById(floorId).style.display = 'block';
+        window.livewire.emit('floorSelected', floorId); // Emit Livewire event
     }
-    document.getElementById(floorId).style.display = 'block';
-  }
 
-  function openModal(content) {
-    document.getElementById('modalContent').innerText = content;
-    document.getElementById('myModal').style.display = 'flex';
-  }
-
-  function closeModal() {
-    document.getElementById('myModal').style.display = 'none';
-  }
-
-  // Function to save the current floor ID to sessionStorage
-  function saveCurrentFloor(floorId) {
-    sessionStorage.setItem('currentFloor', floorId);
-  }
-
-  // Function to reload the page and stay on the current floor
-  function reloadPage() {
-    const currentFloorId = sessionStorage.getItem('currentFloor');
-    saveCurrentFloor(currentFloorId); // Save current floor before reloading
-    location.reload(); // Reload the page
-  }
-
-  // Function to restore the current floor after the page reloads
-  function restoreCurrentFloor() {
-    const currentFloorId = sessionStorage.getItem('currentFloor');
-    if (currentFloorId !== null) {
-      showFloor(currentFloorId); // Show the current floor after reloading
+/*     function openModal(content) {
+        document.getElementById('modalContent').innerText = content;
+        document.getElementById('MapFormModal').style.display = 'flex';
     }
-  }
 
-  // Call restoreCurrentFloor on page load to show the correct floor
-  window.addEventListener('load', restoreCurrentFloor);
+    function closeModal() {
+        document.getElementById('MapFormModal').style.display = 'none';
+    } */
+
+    // Function to save the current floor ID to sessionStorage
+    function saveCurrentFloor(floorId) {
+        sessionStorage.setItem('currentFloor', floorId);
+    }
+
+    // Function to reload the page and stay on the current floor
+    function reloadPage() {
+        const currentFloorId = sessionStorage.getItem('currentFloor');
+        saveCurrentFloor(currentFloorId); // Save current floor before reloading
+        location.reload(); // Reload the page
+    }
+
+    // Function to restore the current floor after the page reloads
+    function restoreCurrentFloor() {
+        const currentFloorId = sessionStorage.getItem('currentFloor');
+        if (currentFloorId !== null) {
+            showFloor(event, currentFloorId); // Show the current floor after reloading
+        }
+    }
+
+    // Call restoreCurrentFloor on page load to show the correct floor
+    window.addEventListener('load', restoreCurrentFloor);
+
+    function updateIconColor(status) {
+        const icon = document.getElementById('statusIcon');
+        if (status === 'active') {
+            icon.style.color = 'green'; // Set color to green for active status
+        } else if (status === 'inactive') {
+            icon.style.color = 'orange'; // Set color to orange for inactive status
+        } else if (status === 'refill') {
+            icon.style.color = 'blue'; // Set color to blue for refill status
+        }
+    }
 </script>

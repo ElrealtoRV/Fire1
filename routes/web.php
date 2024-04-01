@@ -23,6 +23,7 @@ use App\Http\Livewire\Office\OfficeList;
 use App\Http\Livewire\Record\RecordList;
 use App\Http\Livewire\Map\BuildingList;
 use App\Http\Livewire\Map\Cas\CasFloor;
+use App\Http\Livewire\Map\Cas\GroundFloor;
 use App\Http\Livewire\Department\DepartmentList;
 use App\Http\Livewire\Task\TaskManager;
 
@@ -55,9 +56,6 @@ Route::group(['middleware' => ['role:admin']], function () {
 });
 Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('regular-user-list', RegularUserList::class);
     Route::get('positions', PositionList::class);
     Route::get('affiliation',AffiliationList::class);
@@ -72,6 +70,7 @@ Route::group(['middleware' => ['role:admin|Head']], function () {
     Route::get('record', RecordList::class);
     Route::get('map', BuildingList::class);
     Route::get('/cas-floor', CasFloor::class)->name('cas.floor');
+    Route::get('/ground-floor', GroundFloor::class)->name('ground.floor');
 
 
 
@@ -83,6 +82,9 @@ Route::group(['middleware' => ['role:Head']], function () {
     Route::get('request', RequestList::class);
     Route::get('add-request', AddRequest::class);
     Route::get('/tasks', TaskManager::class)->name('tasks.index');
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 });
 require __DIR__.'/auth.php';

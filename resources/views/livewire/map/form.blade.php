@@ -2,13 +2,13 @@
 <div class="modal-content" style="max-width: 800px; width: 100%;">
     <div class="modal-header" style="background: linear-gradient(to right, #3498db, #2e37a4); color:white;">
         <h1 class="modal-title fs-5" style="color: white;">
-            @if ($fireId)
-                Edit Fire Extinguisher
-            @else
+        @if ($fireId)
+                View Fire Extinguisher
+        @else
                 Install Fire Extinguisher
-            @endif
+        @endif
         </h1>
-        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal"  aria-label="Close"></button>
+        <button type="button" class="btn-close btn-sm" data-bs-dismiss="modal" style="color:white;" aria-label="Close"></button>
     </div>
     @if ($errors->any())
     <span class="alert alert-danger">
@@ -138,8 +138,17 @@
                     </div>
                 </div>
 
-                
-      
+                <div id="fireModal" class="modal">
+                    <p>Type: {{ $type }}</p>
+                    <p>Fire Name: {{ $firename }}</p>
+                    <p>Serial Number: {{ $serial_number }}</p>
+                    <p>Location: {{ $location }}</p>
+                    <p>Installation Date: {{ $installation_date }}</p>
+                    <p>Expiration Date: {{ $expiration_date }}</p>
+                    <p>Description: {{ $description }}</p>
+                    <p>Status: {{ $status }}</p>
+                    <button wire:click="closefireModal">Close</button>
+                </div>
         <div class="modal-footer">
             <button type="submit" class="btn btn-primary">Save</button>
         </div>

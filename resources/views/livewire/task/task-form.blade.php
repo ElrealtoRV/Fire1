@@ -22,15 +22,18 @@
                         @error('dueDate') <span class="error">{{ $message }}</span> @enderror
                     </div>
                     <div class="form-group">
-                        <label for="firstName">First Name</label>
-                        <input type="text" class="form-control" id="firstName" wire:model="first_name">
-                        @error('first_name') <span class="error">{{ $message }}</span> @enderror
-                    </div>
-                    <div class="form-group">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" class="form-control" id="lastName" wire:model="last_name">
-                        @error('last_name') <span class="error">{{ $message }}</span> @enderror
-                    </div>
+                    <label for="user">Select Employee</label>
+                    <select class="form-control" id="user" wire:model="selectedUserId">
+                    <?php $employees = \App\Models\User::all(); ?>
+                        @foreach ($employees as $employee)
+                            <option value="{{ $employee->id }}">
+                                {{ $employee->first_name . ' ' . $employee->last_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+
                 </form>
             </div>
             <div class="modal-footer">

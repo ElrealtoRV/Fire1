@@ -29,7 +29,7 @@
                     <tr>
                         <td>{{ $task->name }}</td>
                         <td>{{ $task->due_date->format('M d, Y') }}</td>
-                        <td>{{ $task->first_name }} {{ $task->last_name }}</td>
+                        <p>Assigned To: {{ $task->user->first_name }} {{ $task->user->last_name }}</p>
                         <td>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" wire:click="toggleTaskStatus({{ $task->id }})" {{ $task->done ? 'checked' : '' }}>

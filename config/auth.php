@@ -44,6 +44,10 @@ return [
         'driver' => 'session',
         'provider' => 'employee',
     ],
+    'regularuser' => [
+        'driver' => 'sanctum',
+        'provider' => 'regularusers',
+    ],
 ],
     /*
     |--------------------------------------------------------------------------
@@ -72,12 +76,17 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\EmployeeList::class,
         ],
+            'regularusers' => [
+                'driver' => 'eloquent',
+                'model' => App\Models\RegularList::class,
+            ],
+        ],
+        
     
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-    ],
     /*
     |--------------------------------------------------------------------------
     | Resetting Passwords

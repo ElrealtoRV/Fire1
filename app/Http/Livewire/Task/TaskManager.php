@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Task;
 
 use Livewire\Component;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Validation\Rule;
 
 class TaskManager extends Component
@@ -14,6 +15,7 @@ class TaskManager extends Component
     public $first_name;
     public $last_name;
     public $editingTaskId;
+    public $selectedUserId; 
 
     protected $rules = [
         'taskName' => 'required',
@@ -99,7 +101,9 @@ class TaskManager extends Component
     }
 
     public function render()
-    {
-        return view('livewire.task.task-manager');
+    {   
+        $users = User::all();
+        $tasks = Task::with('user')->get();
+        return view('livewire.task.task-manager', compact('tasks', 'users'));
     }
 }

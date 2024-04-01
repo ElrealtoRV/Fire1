@@ -4,22 +4,21 @@ namespace App\Http\Livewire\Task;
 
 use Livewire\Component;
 use App\Models\Task;
+use App\Models\User;
 
 class TaskForm extends Component
 {
     public $task;
     public $taskName;
     public $dueDate;
-    public $firstName;
-    public $lastName;
+    public $selectedUserId;
 
     public function mount(Task $task)
     {
         $this->task = $task;
         $this->taskName = $task->name ?? '';
         $this->dueDate = $task->due_date ?? '';
-        $this->firstName = $task->first_name ?? '';
-        $this->lastName = $task->last_name ?? '';
+        $this->selectedUserId = $task->user_id ?? null;
     }
 
     public function saveTask()
@@ -27,23 +26,22 @@ class TaskForm extends Component
         $this->validate([
             'taskName' => 'required',
             'dueDate' => 'required|date',
-            'firstName' => 'required',
-            'lastName' => 'required',
+            'user_id' => 'required',
+           
         ]);
 
         if ($this->task->id) {
             $this->task->update([
                 'name' => $this->taskName,
                 'due_date' => $this->dueDate,
-                'first_name' => $this->firstName,
-                'last_name' => $this->lastName,
+                'user_id' => $this->selectedUserId,
+                
             ]);
         } else {
             Task::create([
                 'name' => $this->taskName,
                 'due_date' => $this->dueDate,
-                'first_name' => $this->firstName,
-                'last_name' => $this->lastName,
+                'user_id' => $this->selectedUserId,
                 'done' => false,
             ]);
         }
@@ -56,12 +54,14 @@ class TaskForm extends Component
     {
         $this->taskName = '';
         $this->dueDate = '';
-        $this->firstName = '';
-        $this->lastName = '';
+        $this->selectedUserId = '';
+       
     }
 
     public function render()
     {
-        return view('livewire.task.task-form');
+        $employees = User::select('id', 'first_name', 'last_name')->get();
+        return view('livewire.your-view-name', compact('employees'));
     }
+   
 }

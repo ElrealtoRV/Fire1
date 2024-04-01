@@ -22,4 +22,14 @@ class FireList extends Model
         return $this->belongsTo(LocationList::class, 'location', 'id');
         
     }
+    public static function getFireNames()
+    {
+        return self::pluck('firename');
+    }
+    public function syncFire(array $fireCheck)
+    {
+        // Implement synchronization logic here
+        // For example, you can update related records based on the provided $fireCheck array
+    }
+    
 }

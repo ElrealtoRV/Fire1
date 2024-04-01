@@ -120,7 +120,7 @@ class UserForm extends Component
                 'office' => $this->office,
                 'password' => Hash::make($this->password)
             ]);
-    
+                
             $user->assignRole($this->roleCheck);
     
             $action = 'store';

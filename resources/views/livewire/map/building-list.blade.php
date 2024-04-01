@@ -66,25 +66,7 @@
         color: #ddd;
     }
     /* Modal styles */
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.4);
-    }
 
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
 
     /* Responsive styles */
     @media (max-width: 480px) {
@@ -122,8 +104,9 @@
                 <img src="{{ asset('assets/img/CBA.png') }}">
             </div>
             <div class="content">
-                <h2>College of Business and Accounting</h2>
-                <p>Description</p>
+                <h2>COMING SOON</h2>
+                <!-- <h2>College of Business and Accounting</h2> -->
+                <!-- <p>Description</p> -->
             </div>
         </div>
         <div class="card">
@@ -131,8 +114,9 @@
                 <img src="{{ asset('assets/img/New Admin.png') }}">
             </div>
             <div class="content">
-                <h2>Admin Building</h2>
-                <p>Description</p>
+                <h2>COMING SOON</h2>
+                <!-- <h2>Admin Building</h2> -->
+                <!-- <p>Description</p> -->
             </div>
         </div>
     </div>

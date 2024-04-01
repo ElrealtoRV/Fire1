@@ -27,6 +27,9 @@ return new class extends Migration
             $table->foreign('office')->references('id')->on('office_lists');
             $table->string('password');
             $table->integer('status')->default(0);
+            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('first_name_verified_at')->nullable();
+            $table->timestamp('last_name_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

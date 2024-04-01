@@ -65,7 +65,7 @@ class UserSeeder extends Seeder
             'idnum' => '201901162',
             'office' => $studentOffice->id,
             'password' => bcrypt('staff123')
-        ])->assignRole('Student');
+        ]);
 
     }
 }

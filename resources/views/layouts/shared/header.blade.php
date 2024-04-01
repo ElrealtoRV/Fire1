@@ -27,8 +27,8 @@
 					<span style="display: flex;">
 						<img id="fireExtinguisherIcon" src="{{ asset('assets/img/logoIcon/fire-extinguisher.png') }}" width="50" height="50" alt="Fire Extinguisher Icon" style=" display: none;">
 						<span class="text1"style="font-size:15px font-weight:bold;">
-						<p style="font-size:10px; padding-top:1px; margin-bottom:-10px; margin-right:120px;">Norsu </p>Fire Extinguisher
-							<p style="font-size:15px ">MMSS</p>
+						<p style="font-size:15px; padding-top:1px; margin-bottom:-10px; margin-right:120px;">Norsu </p><h1 style="font-size:50px; margin-top:-20px; margin-bottom: 15px; ">BGO</h1>
+							
 						</span>
 					</span>
 				</a>

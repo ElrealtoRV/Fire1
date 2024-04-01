@@ -18,6 +18,7 @@ class FireExtinguisher extends Component
         'refreshFireExtinguisher' => '$refresh',
         'deleteFire',
         'editFire',
+        'viewFire',
         'deleteConfirmFire'
         
     ];
@@ -37,6 +38,11 @@ class FireExtinguisher extends Component
         $this->emit('fireId', $this->fireId);
         $this->emit('openFireModal');
         
+    }
+    public function viewFire($fireId)
+    {
+        $this->fireId = $fireId;
+        $this->emit('openFireModal', $this->fireId);
     }
     public function deleteFire($fireId)
     {

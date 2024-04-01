@@ -1,0 +1,23 @@
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		Livewire.hook('message.processed', (component) => {
+			setTimeout(function() {
+				$('#alert').fadeOut('fast');
+			}, 5000);
+		});
+	});
+
+	window.livewire.on('closeMapFormModal', () => {
+		$('#MapFormModal').modal('hide');
+	});
+	window.livewire.on('openMapFormModal', () => {
+		$('#MapFormModal').modal('show');
+	});
+
+	window.livewire.on('closeUserInquiryModal', () => {
+		$('#userInquiryModal').modal('hide');
+	});
+	window.livewire.on('openUserInquiryModal', () => {
+		$('#userInquiryModal').modal('show');
+	});
+</script>
