@@ -1,3 +1,4 @@
+<div>
 <style>
   
     .floor-content {
@@ -5,6 +6,7 @@
         padding: 20px;
         position: relative;
     }
+    
 
 .CasDean,
 .CAS106,
@@ -135,14 +137,30 @@
 <livewire:flash-message.flash-message />
 <div class="scroll-container">
     <div id="ground-floor" class="floor-content">
-  
+        
         <img src="{{ asset('assets/img/GroundFloor.png') }}" alt="GroundFloor" width="1000px" height="300px">
-        <span class="CasDean" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
-        <span class="CasDean" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
-        <span class="CasDean" wire:click="createFire"><i class="fas fa-plus plus-icon"></i></span>
-        <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
-        <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
-        <span class="CAS106" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-plus plus-icon"></i></span>
+        @foreach ($fire as $fires)
+        <div class="icon-container CasDean" wire:click="editFire({{ $fires->id }})">
+            <i class="fas fa-edit edit-icon"></i>
+        </div>
+        <div class="icon-container CasDean" wire:click="viewFire({{ $fires->id }})">
+            <i class="fas fa-eye eye-icon"></i>
+        </div>
+        <div class="icon-container CasDean" wire:click="createFire">
+            <i class="fas fa-plus plus-icon"></i>
+        </div>
+
+
+        <div class="icon-container CAS106" wire:click="editFire({{ $fires->id }})">
+            <i class="fas fa-edit edit-icon"></i>
+        </div>
+        <div class="icon-container CAS106" wire:click="viewFire({{ $fires->id }})">
+            <i class="fas fa-eye eye-icon"></i>
+        </div>
+        <div class="icon-container CAS106" wire:click="createFire">
+            <i class="fas fa-plus plus-icon"></i>
+        </div>
+       
         <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
         <span class="CAS105" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-plus plus-icon"></i></span>
@@ -170,19 +188,19 @@
         <span class="CAS111" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
         <span class="CAS112" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-eye eye-icon"></i></span>
         <span class="CAS112" onclick="openModal('FACULTY COMPUTING AND RESEATCH CENTER')"><i class="fas fa-edit edit-icon"></i></span>
-
+        @endforeach
         <h1>GROUND FLOOR</h1>
     </div>
 </div>
 
-
-
-{{-- Modal --}}
-		<div wire.ignore.self class="modal fade" id="FireModal" tabindex="-1" role="dialog" aria-labelledby="FireModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
-			<div class="modal-dialog modal-dialog-centered modal-lg">
-				<livewire:fire-extinguisher.fire-form />
-			</div>
-		</div>
-		@section('custom_script')
-		@include('layouts.scripts.fire-scripts')
-		@endsection
+<div>
+  {{-- Modal --}}
+      <div wire.ignore.self class="modal fade" id="MapFormModal" tabindex="-1" role="dialog" aria-labelledby="MapFormModal" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+          <livewire:map.form />
+        </div>
+      </div>
+      @section('custom_script')
+      @include('layouts.scripts.MapForm-scripts')
+      @endsection
+  </div>

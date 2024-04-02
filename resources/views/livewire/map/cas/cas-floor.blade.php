@@ -67,25 +67,6 @@
         opacity: 1;
     }
 
-    .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 20;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-
-    }
-
-    .modal-content {
-        background-color: #fefefe;
-        margin: 15% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 80%;
-    }
 @media (max-width: 768px) {
   .modal-content {
     width: 200px;
@@ -148,15 +129,11 @@
             @livewire('map.cas.second-floor')
             @livewire('map.cas.third-floor')
             @livewire('map.cas.fourth-floor')
-            <!-- Modal -->
+           
         </div>
-    </div>
-    <div id="MapFormModal" class="modal">
-      <div id="modalContent"></div>
-      <livewire:fire-extinguisher.fire-form />
-      <button id="closeModal" onclick="closeModal()">Close</button>
-    </div>
-</div>
+
+
+
 
 <script>
     function showFloor(event, floorId) {
@@ -168,21 +145,6 @@
         document.getElementById(floorId).style.display = 'block';
         window.livewire.emit('floorSelected', floorId); // Emit Livewire event
     }
-
-    function openModal(content) {
-        document.getElementById('modalContent').innerText = content;
-        document.getElementById('MapFormModal').style.display = 'flex';
-    }
-
-    function closeModal() {
-        document.getElementById('MapFormModal').style.display = 'none';
-    }
-
-    // Function to save the current floor ID to sessionStorage
-    function saveCurrentFloor(floorId) {
-        sessionStorage.setItem('currentFloor', floorId);
-    }
-
     // Function to reload the page and stay on the current floor
     function reloadPage() {
         const currentFloorId = sessionStorage.getItem('currentFloor');

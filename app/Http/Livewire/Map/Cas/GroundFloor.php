@@ -10,6 +10,7 @@ use App\Models\LocationList;
 class GroundFloor extends Component
 {
     public $fireId;
+    public $viewMode = false;
     public $search = '';
     public $action = '';  //flash
     public $message = '';  //flash
@@ -19,7 +20,7 @@ class GroundFloor extends Component
         'refreshGroundFLoor' => '$refresh',
         'deleteFire',
         'editFire',
-        'deleteConfirmFire'
+        'openViewModal'
         
     ];
     public function showFloor($floor)
@@ -32,26 +33,24 @@ class GroundFloor extends Component
     }
     public function createFire()
     {
-        
-        $this->emit('resetInputFields'); // Emitting an event to reset input fields, assuming this is part of a Livewire component or similar framework
-        $this->emit('openFireModal'); // Emitting an event to open a modal, assuming this is part of a Livewire component or similar framework
-         
+        $this->emit('resetInputFields');
+        $this->emit('openMapFormModal');
     }
-    
-
     public function editFire($fireId)
     {
         $this->fireId = $fireId;
         $this->emit('fireId', $this->fireId);
-        $this->emit('openFireModal');
+        $this->emit('openMapFormModal');
         
     }
-
     public function viewFire($fireId)
     {
         $this->fireId = $fireId;
-        $this->emit('openFireModal', $this->fireId);
+        $this->viewMode = true; // Set view mode to true
+        $this->emit('openMapFormModal', $this->fireId);
     }
+
+ 
     
     public function getStatusIndicator($status)
     {
@@ -69,13 +68,10 @@ class GroundFloor extends Component
     public function render()
     {
         $fire =FireList::all();
-        $types =TypeList::all();
-        $locations =LocationList::all();
+
 
         return view('livewire.map.cas.ground-floor', [
             'fire' => $fire,
-            'types' => $types,
-            'locations' => $locations,
 
         ]);
     }
