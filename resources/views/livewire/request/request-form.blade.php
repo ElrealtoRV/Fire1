@@ -24,10 +24,10 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="row">
-                        <div class="col-md-4">
+<!--                         <div class="col-md-4">
                             <div class="form-group local-forms">
                                 <label>
-                                    Type
+                                   Request
                                     <span class="login-danger">*</span>
                                 </label>
                                 <select class="form-control select" wire:model="type">
@@ -41,17 +41,17 @@
                                 </select>
 
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-4">
                             <div class="form-group local-forms">
-                                <label>Name</label>
+                                <label>Building</label>
                                 <input class="form-control" type="text" wire:model="firename" placeholder />
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group local-forms">
                                 <label>
-                                    Serial Number
+                                    Floor
                                     <span class="login-danger">*</span>
                                 </label>
                                 <input class="form-control" type="text" wire:model="serial_number" placeholder />
@@ -62,7 +62,7 @@
                         <div class="col-md-6">
                             <div class="form-group local-forms">
                                 <label>
-                                    Location
+                                    Room
                                     <span class="login-danger">*</span>
                                 </label>
                                 <select class="form-control select" wire:model="location">

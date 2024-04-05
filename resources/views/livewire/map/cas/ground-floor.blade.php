@@ -140,13 +140,13 @@
         
         <img src="{{ asset('assets/img/GroundFloor.png') }}" alt="GroundFloor" width="1000px" height="300px">
         @foreach ($fire as $fires)
-        <div class="icon-container CasDean" wire:click="editFire({{ $fires->id }})">
+        <div class="icon-container CasDean" wire:model="room" wire:click="editFire({{ $fires->id }})">
             <i class="fas fa-edit edit-icon"></i>
         </div>
-        <div class="icon-container CasDean" wire:click="viewFire({{ $fires->id }})">
+        <div class="icon-container CasDean" wire:model="room" wire:click="viewFire({{ $fires->id }})">
             <i class="fas fa-eye eye-icon"></i>
         </div>
-        <div class="icon-container CasDean" wire:click="createFire">
+        <div class="icon-container CasDean"  wire:model="room" wire:click="createFire">
             <i class="fas fa-plus plus-icon"></i>
         </div>
 

@@ -54,11 +54,14 @@
 						<table class="table border-0 custom-table comman-table datatable mb-0">
 							<thead>
 								<tr>
-									<th style="width: 10%">Type</th>
 									<th style="width: 10%">Name</th>
-									<th style="width: 10%">Serial Number</th>
-									<th style="width: 10%">Location</th>
-									<th style="width: 50%">Request</th>
+									<th style="width: 10%">Office/Department</th>
+									<th style="width: 10%">Id Number</th>
+									<th style="width: 10%">Affiliation</th>
+									<th style="width: 10%">Request</th>
+									<th style="width: 10%">Building</th>
+									<th style="width: 10%">Floor</th>
+									<th style="width: 10%">Room</th>
 									<th style="width: 10%; text-align: center;">Action</th>
 								</tr>
 							</thead>
